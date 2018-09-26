@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections;
 
 namespace CoursesManagerLib
 {
@@ -13,42 +9,73 @@ namespace CoursesManagerLib
         public string surname;
         public int ID;
         public List<Group> groups;
-        public List<Course> courses;
+        public List<Course> courseRequests;
+
+        public void JoinGroup(Group group)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LeaveGroup(Group group)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddCourseRequest(Group group)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteCourseRequest(Group group)
+        {
+            throw new NotImplementedException();
+        }
     }
+
     public class Group
     {
-        public Group (Course course) //создание новой группы
+        public Course course;
+        public List<Client> clients;
+        public Attedance attendance;
+        public int count;
+
+        public Group(Course course) //создание новой группы
         {
             this.course = course;
             clients = new List<Client>();
             attendance = new Attedance();
             count = 0;
         }
-        public void AddClient(Client client)//добавление клиента в группу
+
+        public void AddClient(Client client) //добавление клиента в группу
         {
             clients.Add(client);
             count++;
         }
-        public void RemoveClient(Client client)//удаление клиента в группу
+
+        public void RemoveClient(Client client) //удаление клиента в группу
         {
             clients.Remove(client); //сработает ли? может надо дописать сравнение для данного типа?
             count--;
         }
-        public Course course;
-        public List<Client> clients;
-        public Attedance attendance;
-        public int count;
 
+        public bool FindClient(Client client)
+        {
+            throw new NotImplementedException();
+        }
     }
+
     public class Attedance
     {
         public List<int> attendance; //тут непонятно какой тип у переменной, лист интов для начала
-                                     //это типа класс посещаемости и метод получить посещаемость в нем
+
+        //это типа класс посещаемости и метод получить посещаемость в нем
         public List<int> GetAttedance()
         {
-            return new List<int>();
+            throw new NotImplementedException();
         }
     }
+
     public class Course
     {
         public string language;
@@ -57,18 +84,21 @@ namespace CoursesManagerLib
         public string format;
         public int price;
     }
+
     public class School
     {
         public List<Group> groups;
-        public List <Client> clients;
+        public List<Client> clients;
         public List<Client> claims;
-        public void Admission(Client client)//зачисление в группу
-        {
-            
-        }
-        public void Exclusion()//удаление из группы
-        {
 
+        public void Admission(Client client) //зачисление в группу
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Exclusion() //удаление из группы
+        {
+            throw new NotImplementedException();
         }
     }
 }
