@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursesManagerLib", "CoursesManagerLib\CoursesManagerLib.csproj", "{158B4F88-324A-4F91-835B-43D22F9EE9B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCoursesManagerLib", "TestCoursesManagerLib\TestCoursesManagerLib.csproj", "{D56F6150-DA2B-4EC9-97AB-BE9B3B41CA94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{158B4F88-324A-4F91-835B-43D22F9EE9B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{158B4F88-324A-4F91-835B-43D22F9EE9B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{158B4F88-324A-4F91-835B-43D22F9EE9B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D56F6150-DA2B-4EC9-97AB-BE9B3B41CA94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D56F6150-DA2B-4EC9-97AB-BE9B3B41CA94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D56F6150-DA2B-4EC9-97AB-BE9B3B41CA94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D56F6150-DA2B-4EC9-97AB-BE9B3B41CA94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CC4B282A-F792-4602-A9CC-F28BC6A45425}
 	EndGlobalSection
 EndGlobal
