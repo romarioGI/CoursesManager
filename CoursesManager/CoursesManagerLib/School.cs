@@ -6,9 +6,13 @@ namespace CoursesManagerLib
     public class School
     {
         public List<Group> groups;
-        public List<Client> clients;
+        public HashSet<Client> clients;
         public List<Client> claims;
 
+        public School()
+        {
+            clients = new HashSet<Client>();
+        }
         public void Admission(Client client) //зачисление в группу
         {
             throw new NotImplementedException();
