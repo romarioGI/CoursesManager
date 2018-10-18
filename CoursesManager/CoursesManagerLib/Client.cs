@@ -11,45 +11,27 @@ namespace CoursesManagerLib
         public string name;
         public string surname;
         public int ID;
-        public static int last_ID = 0;
         public List<Group> groups;
         public List<Course> courseRequests;
 
-        public Client(string name, string surname, List<Course> courses)
-        {
-            this.name = name;
-            this.surname = surname;
-            courseRequests = courses;
-            this.ID = last_ID++;
-            groups = new List<Group>();
-        }
-
         public void JoinGroup(Group group)
         {
-            if (groups.IndexOf(group) != -1) groups.Add(group);
-            else throw new ArgumentException("This group is already in the list.");
+            throw new NotImplementedException();
         }
 
         public void LeaveGroup(Group group)
         {
-            if(groups.IndexOf(group) != -1) groups.Remove(group);
-            else throw new ArgumentException("This group is not in the list.");
+            throw new NotImplementedException();
         }
 
-        public void AddCourseRequest(Course course)
+        public void AddCourseRequest(Group group)
         {
-            if (courseRequests.IndexOf(course) != -1) courseRequests.Add(course);
-            else throw new ArgumentException("This course is already in the list.");
+            throw new NotImplementedException();
         }
 
-        public void DeleteCourseRequest(Course course)
+        public void DeleteCourseRequest(Group group)
         {
-            if (courseRequests.IndexOf(course) != -1) courseRequests.Remove(course);
-            else throw new ArgumentException("This course is not in the list.");
-        }
-        public override int GetHashCode()
-        {
-            return ID;
+            throw new NotImplementedException();
         }
     }
 }
