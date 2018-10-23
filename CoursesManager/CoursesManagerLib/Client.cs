@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace CoursesManagerLib
 {
+
+    // поля и свойства с большой буквы
+    // что можно переделать на свойства и где необходимо закрыть чтение/измение 
+    // для скорости переделать листы на хэшсеты либо на сортетсеты
+
     public class Client
     {
         public string name;

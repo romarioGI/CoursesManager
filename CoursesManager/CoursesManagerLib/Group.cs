@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace CoursesManagerLib
 {
+    // поля и свойства с большой буквы
+    // что можно переделать на свойства и где необходимо закрыть чтение/измение 
+
     public class Group
     {
         public Course course;
