@@ -2,9 +2,7 @@
 
 namespace CoursesManagerLib
 {
-
-    //слишком много параметров
-
+    // Добавить  сообщения ошибкам
     public class Course : IEquatable<Course>
     {
         private int _intensity;

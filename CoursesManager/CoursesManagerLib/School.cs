@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace CoursesManagerLib
 {
-    // поля и свойства с большой буквы
     // что можно переделать на свойства и где необходимо закрыть чтение/измение 
     // для скорости переделать листы на хэшсеты либо на сортетсеты
 
@@ -11,20 +10,15 @@ namespace CoursesManagerLib
 
     public class School
     {
-        public List<Group> groups;
-        public HashSet<Client> clients;
-        public List<Client> claims;
+        public readonly List<Group> Groups;
+        public readonly HashSet<Client> Clients;
+        public readonly List<Client> Claims;
 
         public School()
         {
-            clients = new HashSet<Client>();
+            Clients = new HashSet<Client>();
         }
-        public void Admission(Client client) //зачисление в группу
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Exclusion() //удаление из группы
+        public void Admission() //зачисления клиентов
         {
             throw new NotImplementedException();
         }

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CoursesManagerLib
 {
@@ -11,25 +8,25 @@ namespace CoursesManagerLib
 
     public class Group
     {
-        public Course course;
-        public List<Client> clients;
-        public Attedance attendance;
+        public readonly Course Course;
+        public readonly List<Client> Clients;
+        public readonly Attedance Attendance;
 
         public Group(Course course) //создание новой группы
         {
-            this.course = course;
-            clients = new List<Client>();
-            attendance = new Attedance();
+            Course = course;
+            Clients = new List<Client>();
+            Attendance = new Attedance();
         }
 
         public void AddClient(Client client) //добавление клиента в группу
         {
-            clients.Add(client);
+            Clients.Add(client);
         }
 
         public void RemoveClient(Client client) //удаление клиента в группу
         {
-            clients.Remove(client); //сработает ли? может надо дописать сравнение для данного типа?
+            Clients.Remove(client); //сработает ли? может надо дописать сравнение для данного типа?
         }
 
         public bool FindClient(Client client)
