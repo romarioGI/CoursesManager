@@ -6,55 +6,55 @@ using System.Threading.Tasks;
 
 namespace CoursesManagerLib
 {
-
-    // поля и свойства с большой буквы
+    // IComparable по имени, фамилии, ид
+    // indexof на contains поменять можно
     // что можно переделать на свойства и где необходимо закрыть чтение/измение 
-    // для скорости переделать листы на хэшсеты либо на сортетсеты
+    // для скорости переделать листы на хэшсеты
 
     public class Client
     {
-        public string name;
-        public string surname;
-        public int ID;
-        public static int last_ID = 0;
-        public List<Group> groups;
-        public List<Course> courseRequests;
+        public string Name;
+        public string Surname;
+        public readonly int Id;
+        public static int LastId = 0;
+        public readonly List<Group> Groups;
+        public readonly List<Course> CourseRequests;
 
-        public Client(string name, string surname, List<Course> courses)
+        public Client(string name, string surname)
         {
-            this.name = name;
-            this.surname = surname;
-            courseRequests = courses;
-            this.ID = last_ID++;
-            groups = new List<Group>();
+            Name = name;
+            Surname = surname;
+            Id = LastId++;
+            Groups = new List<Group>();
+            CourseRequests = new List<Course>();
         }
 
         public void JoinGroup(Group group)
         {
-            if (groups.IndexOf(group) != -1) groups.Add(group);
+            if (Groups.IndexOf(group) != -1) Groups.Add(group);
             else throw new ArgumentException("This group is already in the list.");
         }
 
         public void LeaveGroup(Group group)
         {
-            if(groups.IndexOf(group) != -1) groups.Remove(group);
+            if(Groups.IndexOf(group) != -1) Groups.Remove(group);
             else throw new ArgumentException("This group is not in the list.");
         }
 
         public void AddCourseRequest(Course course)
         {
-            if (courseRequests.IndexOf(course) != -1) courseRequests.Add(course);
+            if (CourseRequests.IndexOf(course) != -1) CourseRequests.Add(course);
             else throw new ArgumentException("This course is already in the list.");
         }
 
         public void DeleteCourseRequest(Course course)
         {
-            if (courseRequests.IndexOf(course) != -1) courseRequests.Remove(course);
+            if (CourseRequests.IndexOf(course) != -1) CourseRequests.Remove(course);
             else throw new ArgumentException("This course is not in the list.");
         }
         public override int GetHashCode()
         {
-            return ID;
+            return Id;
         }
     }
 }
