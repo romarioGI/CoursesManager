@@ -19,14 +19,32 @@ namespace CoursesManagerLib
             Attendance = new Attedance();
         }
 
+        public bool CanAddClient()
+        {
+            return (Clients.Count < 10);
+        }
         public void AddClient(Client client) //добавление клиента в группу
         {
-            Clients.Add(client);
+            if (Clients.Count > 9) throw new ArgumentException("This group is full.");
+            else
+            {
+                Clients.Add(client);
+                client.JoinGroup(this);
+            }
         }
 
+        public int GetCount()
+        {
+            return Clients.Count;
+        }
         public void RemoveClient(Client client) //удаление клиента в группу
         {
-            Clients.Remove(client); //сработает ли? может надо дописать сравнение для данного типа?
+            if (Clients.Count < 6) throw new ArgumentException("This group is too small.");
+            else
+            {
+                Clients.Remove(client); //сработает ли? может надо дописать сравнение для данного типа?
+                client.LeaveGroup(this);
+            }
         }
 
         public bool FindClient(Client client)

@@ -29,6 +29,12 @@ namespace CoursesManagerLib
             CourseRequests = new List<Course>();
         }
 
+        public List<Course> GetCourseRequests()
+        {
+            if (CourseRequests.Count != 0)
+                return CourseRequests;
+            else return null;
+        }
         public void JoinGroup(Group group)
         {
             if (Groups.IndexOf(group) != -1) Groups.Add(group);
