@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace CoursesManagerLib
 {
@@ -9,12 +8,12 @@ namespace CoursesManagerLib
     // возможно стоит создать отдельный класс, в котором будет логика зачисления 
     public struct Claim
     {
-        public Course course;
-        public List<Client> clients;
-        public Claim(Course course)
+        public Course Сourse;
+        public List<Client> Сlients;
+        public Claim(Course сourse)
         {
-            this.course = course;
-            clients = new List<Client>();
+            Сourse = сourse;
+            Сlients = new List<Client>();
         }
     }
     public class School
@@ -25,7 +24,9 @@ namespace CoursesManagerLib
 
         public School()
         {
+            Groups = new List<Group>();
             Clients = new HashSet<Client>();
+            Claims = new List<Claim>();
         }
         public void Admission() //зачисления клиентов
         {
@@ -36,8 +37,8 @@ namespace CoursesManagerLib
                     foreach (Course course in client.GetCourseRequests())
                     {
                         Group group1 = null;
-                        bool add = false;
-                        foreach (Group group in Groups)
+                        var add = false;
+                        foreach (var group in Groups)
                         {
                             if (group.Course.Equals(course))
                             {
@@ -49,10 +50,10 @@ namespace CoursesManagerLib
                                     add = true;
                                     break;
                                 }
-                                else if (group1 != null) group1 = group;
+                                else if (group1 == null) group1 = group;
                             }
                         }
-                        if (!add && group1 != null) //если нет подходящих групп
+                        if (!add && group1 == null) //если нет подходящих групп
                         {
                             NewClaim(course, client);
                         }
@@ -67,44 +68,44 @@ namespace CoursesManagerLib
         }
         public void NewClaim(Course course, Client client)
         {
-            bool add = false;
+            var add = false;
             if (Claims.Count != 0)
-                foreach (Claim claim in Claims)
+                foreach (var claim in Claims)
                 {
-                    if (claim.course.Equals(course))
+                    if (claim.Сourse.Equals(course))
                     {
-                        claim.clients.Add(client);
+                        claim.Сlients.Add(client);
                         add = true;
                         break;
                     }
                 }
             if (!add)
             {
-                Claim claim = new Claim(course);
-                claim.clients.Add(client);
+                var claim = new Claim(course);
+                claim.Сlients.Add(client);
                 Claims.Add(claim);
             }
         }
         public void ShareGroup(Group group1, Client client)
         {
             Groups.Remove(group1);
-            Group gr = group1;
-            Group group2 = group1;
-            for (int i = gr.GetCount() - 1; i >= group1.GetCount() / 2; i--)
+            var gr = group1;
+            var group2 = group1;
+            for (var i = gr.GetCount() - 1; i >= group1.GetCount() / 2; i--)
             {
                 group1.RemoveClient(gr.Clients[i]);
             }
-            for (int i = 0; i < group1.GetCount() / 2; i++)
+            for (var i = 0; i < group1.GetCount() / 2; i++)
             {
                 group2.RemoveClient(gr.Clients[i]);
             }
-            foreach (Client cl in group1.Clients)
+            foreach (var cl in group1.Clients)
             {
                 cl.LeaveGroup(gr);
                 cl.JoinGroup(group1);
             }
             group2.AddClient(client);
-            foreach (Client cl in group2.Clients)
+            foreach (var cl in group2.Clients)
             {
                 cl.LeaveGroup(gr);
                 cl.JoinGroup(group2);
@@ -114,28 +115,28 @@ namespace CoursesManagerLib
         }
         public void ViewClaims()
         {
-            foreach (Claim claim in Claims)
+            foreach (var claim in Claims)
             {
-                int k = claim.clients.Count;
-                int m = (k + k / 10 - 1) / (k / 10 + 1);
+                var k = claim.Сlients.Count;
+                var m = (k + k / 10 - 1) / (k / 10 + 1);
                 if (k > 4)
                 {
-                    Group gr = new Group(claim.course);
-                    for (int i = 0; i < k / 10; i++)
+                    Group gr;
+                    for (var i = 0; i < k / 10; i++)
                     {
-                        gr = new Group(claim.course);
-                        for (int j = i * m; j < (i + 1) * m; j++)
+                        gr = new Group(claim.Сourse);
+                        for (var j = i * m; j < (i + 1) * m; j++)
                         {
-                            gr.AddClient(claim.clients[j]);
-                            claim.clients[j].JoinGroup(gr);
+                            gr.AddClient(claim.Сlients[j]);
+                            claim.Сlients[j].JoinGroup(gr);
                         }
                         Groups.Add(gr);
                     }
-                    gr = new Group(claim.course);
-                    for (int l = k / 10 * m; l < k; l++)
+                    gr = new Group(claim.Сourse);
+                    for (var l = k / 10 * m; l < k; l++)
                     {
-                        gr.AddClient(claim.clients[l]);
-                        claim.clients[l].JoinGroup(gr);
+                        gr.AddClient(claim.Сlients[l]);
+                        claim.Сlients[l].JoinGroup(gr);
                     }
                     Groups.Add(gr);
                 }
