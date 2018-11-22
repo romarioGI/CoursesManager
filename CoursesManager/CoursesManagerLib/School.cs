@@ -15,6 +15,14 @@ namespace CoursesManagerLib
             Сourse = сourse;
             Сlients = new List<Client>();
         }
+        public override string ToString()
+        {
+            string s = "";
+            s += this.Сourse.ToString();
+            foreach (Client cl in this.Сlients)
+                s += cl.ToString();
+            return s;
+        }
     }
     public class School
     {
@@ -34,8 +42,10 @@ namespace CoursesManagerLib
             {
                 if (client.GetCourseRequests() != null)
                 {
-                    foreach (Course course in client.GetCourseRequests())
+                    for(int c=0;c<client.CourseRequests.Count;c++)
+                    //foreach (Course course in client.GetCourseRequests())
                     {
+                            Course course = client.CourseRequests[c];
                         Group group1 = null;
                         var add = false;
                         foreach (var group in Groups)
@@ -46,6 +56,7 @@ namespace CoursesManagerLib
                                 {
                                     group.AddClient(client);
                                     client.DeleteCourseRequest(course);
+                                    c--;
                                     client.JoinGroup(group);
                                     add = true;
                                     break;
@@ -56,10 +67,14 @@ namespace CoursesManagerLib
                         if (!add && group1 == null) //если нет подходящих групп
                         {
                             NewClaim(course, client);
+                            client.DeleteCourseRequest(course);
+                            c--;
                         }
                         else if (!add)//нет незаполненных подходящих групп//разделение на 2 группы
                         {
                             ShareGroup(group1, client);
+                            client.DeleteCourseRequest(course);
+                            c--;
                         }
                     }
                 }
@@ -115,8 +130,10 @@ namespace CoursesManagerLib
         }
         public void ViewClaims()
         {
-            foreach (var claim in Claims)
+            for (int c=0;c<Claims.Count;c++)
+            //foreach (var claim in Claims)
             {
+                Claim claim = Claims[c];
                 var k = claim.Сlients.Count;
                 var m = (k + k / 10 - 1) / (k / 10 + 1);
                 if (k > 4)
@@ -128,7 +145,7 @@ namespace CoursesManagerLib
                         for (var j = i * m; j < (i + 1) * m; j++)
                         {
                             gr.AddClient(claim.Сlients[j]);
-                            claim.Сlients[j].JoinGroup(gr);
+                            //claim.Сlients[j].JoinGroup(gr);
                         }
                         Groups.Add(gr);
                     }
@@ -136,11 +153,12 @@ namespace CoursesManagerLib
                     for (var l = k / 10 * m; l < k; l++)
                     {
                         gr.AddClient(claim.Сlients[l]);
-                        claim.Сlients[l].JoinGroup(gr);
+                        //claim.Сlients[l].JoinGroup(gr);
                     }
                     Groups.Add(gr);
+                    Claims.Remove(claim);
+                    c--;
                 }
-                Claims.Remove(claim);
 
             }
         }

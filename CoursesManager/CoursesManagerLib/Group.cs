@@ -47,6 +47,15 @@ namespace CoursesManagerLib
             }
         }
 
+        public override string ToString()
+        {
+            string s = "Course\n";
+            s += Course.ToString()+"\n";
+            foreach (Client cl in Clients)
+                s += cl.ToString() + "\n";
+            return s;
+        }
+
         public bool FindClient(Client client)
         {
             throw new NotImplementedException();

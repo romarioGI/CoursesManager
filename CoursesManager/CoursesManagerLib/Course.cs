@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CoursesManagerLib
 {
@@ -62,10 +63,14 @@ namespace CoursesManagerLib
         public bool Equals(Course other)
         {
             return other != null && Language == other.Language && Intensity == other.Intensity &&
-                   Level == other.Level && Format == other.Format && Price == other.Price;
+                   Level == other.Level && Format == other.Format;
+        }
+        public override string ToString()
+        {
+            return String.Format("Language  {0}\nLevel   {1}\nDuration  {2}\nFormat   {3}\nPrice   {4}\nIntensity   {5}\r\n", Language, Level, Duration, Format,Price, Intensity);
         }
     }
-
+    
     public enum Format
     {
         Individual,
