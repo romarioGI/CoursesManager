@@ -32,6 +32,7 @@ namespace WpfApp1
         private void ShowGroups_Click(object sender, RoutedEventArgs e)
         {
             string s = "";
+            s += school.Groups.Count.ToString()+"   groups\n";
             foreach (Group gr in school.Groups)
                 s += gr.ToString() + "\n";
             ShowPanel.Text = s;
@@ -76,6 +77,7 @@ namespace WpfApp1
         private void ShowClients_Click(object sender, RoutedEventArgs e)
         {
             string s = "";
+            s += school.Clients.Count.ToString() + "  clients\n";
             foreach (Client cl in school.Clients)
                 s += cl.ToString() + "\n";
             ShowPanel.Text = s;
@@ -84,6 +86,7 @@ namespace WpfApp1
         private void ShowClaims_Click(object sender, RoutedEventArgs e)
         {
             string s = "";
+            s += school.Claims.Count.ToString() + "   claims\n";
             foreach (Claim cl in school.Claims)
                 s += cl.ToString() + "\n";
             ShowPanel.Text = s;
@@ -94,31 +97,14 @@ namespace WpfApp1
             return course;
         }
 
-        private void ButtonClaim_Click(object sender, RoutedEventArgs e)
+        private void ButtonAddClaim_Click(object sender, RoutedEventArgs e)
         {
-            int id = -1;
-            if (TextBoxID.Text != "")
-            {
-                if (int.TryParse(TextBoxID.Text, out id))
-                {
-                    bool add = false;
-                    foreach (Client cl in school.Clients)
-                        if (cl.Id == id)
-                        {
-                            cl.AddCourseRequest(CorseRequest());
-                            add = true;
-                            break;
-                        }
-                    if (!add) LabelID.Content = "Wrong ID";
-                }
-                else LabelID.Content = "Wrong insertion of ID";
-            }
-            else
-            {
+            LabelIsAddClaim.Content = "";
                 Client cl = new Client(TextBoxName.Text,TextBoxSurname.Text);
                 cl.AddCourseRequest(CorseRequest());
                 school.Clients.Add(cl);
-            }
+                TextBoxID.Text = cl.Id.ToString();
+            LabelIsAddClaim.Content = "Your claim is add, see your ID";
         }
 
         private void ButtonAdminWindow_Click(object sender, RoutedEventArgs e)
@@ -160,6 +146,113 @@ namespace WpfApp1
                     if (!add) LabelIDSearch.Content = "Wrong ID";
                 }
                 else LabelIDSearch.Content = "Wrong insertion of ID";
+            }
+        }
+
+        private void ButtonPersClientWindow_Click(object sender, RoutedEventArgs e)
+        {
+            GridPersonalClient.Visibility = Visibility.Hidden;
+            GridClient.Visibility = Visibility.Visible;
+        }
+
+        private void ButtonPersAddClaim_Click(object sender, RoutedEventArgs e)
+        {
+            int id = -1;
+            LabelPersIsAddClaim.Content = "";
+            if (TextBoxPersID.Text != "")
+            {
+                if (int.TryParse(TextBoxPersID.Text, out id))
+                {
+                    bool add = false;
+                    foreach (Client cl in school.Clients)
+                        if (cl.Id == id)
+                        {
+                            foreach(Group gr in cl.Groups)
+                                if(gr.Course==CorseRequest())
+                                {
+                                    LabelPersIsAddClaim.Content = "You have group with this course";
+                                    add = true;
+                                    break;
+                                }
+                            foreach (Course  cs in cl.CourseRequests)
+                                if (cs == CorseRequest())
+                                {
+                                    LabelPersIsAddClaim.Content = "You have Request with this course";
+                                    add = true;
+                                    break;
+                                }
+                            if (add)
+                                break;
+                            cl.AddCourseRequest(CorseRequest());
+                            add = true;
+                            LabelPersIsAddClaim.Content = "Your claim is add";
+                            break;
+                        }
+                    if (!add) LabelPersIsAddClaim.Content = "Wrong ID";
+                }
+                else LabelPersIsAddClaim.Content = "Wrong insertion of ID";
+            }
+        }
+
+        private void BoxPersFormat_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Format caseformat = (Format)BoxPersFormat.SelectedValue;
+            if (BoxPersIntensity != null)
+                switch (caseformat)
+                {
+                    case Format.Individual:
+                        LabelPersPriceAvto.Content = (800 * 4 * (BoxPersIntensity.SelectedIndex + 1)).ToString();
+                        break;
+                    case Format.Group:
+                        LabelPersPriceAvto.Content = (500 * 4 * (BoxPersIntensity.SelectedIndex + 1)).ToString();
+                        break;
+                }
+        }
+
+        private void BoxPersIntensity_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int SelectInd = BoxPersIntensity.SelectedIndex;
+            if (LabelPersDurationAvto != null)
+                switch (SelectInd)
+                {
+                    case 0:
+                        LabelPersDurationAvto.Content = "10";
+                        BoxPersFormat_SelectionChanged(sender, e);
+                        break;
+                    case 1:
+                        LabelPersDurationAvto.Content = "5";
+                        BoxPersFormat_SelectionChanged(sender, e);
+                        break;
+                    case 2:
+                        LabelPersDurationAvto.Content = "3";
+                        BoxPersFormat_SelectionChanged(sender, e);
+                        break;
+                }
+        }
+
+        private void ButtonPersAccount_Click(object sender, RoutedEventArgs e)
+        {
+            int id = -1;
+            LabelIsAddClaim.Content = "";
+            if (TextBoxIDInto.Text != "")
+            {
+                if (int.TryParse(TextBoxIDInto.Text, out id))
+                {
+                    bool add = false;
+                    foreach (Client cl in school.Clients)
+                        if (cl.Id == id)
+                        {
+                            GridClient.Visibility = Visibility.Hidden;
+                            GridPersonalClient.Visibility = Visibility.Visible;
+                            TextBoxPersID.Text = cl.Id.ToString();
+                            TextBoxPersName.Text = cl.Name;
+                            TextBoxPersSurname.Text = cl.Surname;
+                            add = true;
+                            break;
+                        }
+                    if (!add) LabelIsAddClaim.Content = "Wrong ID";
+                }
+                else LabelIsAddClaim.Content = "Wrong insertion of ID";
             }
         }
     }

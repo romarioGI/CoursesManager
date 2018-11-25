@@ -46,35 +46,45 @@ namespace CoursesManagerLib
                     //foreach (Course course in client.GetCourseRequests())
                     {
                             Course course = client.CourseRequests[c];
-                        Group group1 = null;
-                        var add = false;
-                        foreach (var group in Groups)
+                        if (course.Format == Format.Individual)
                         {
-                            if (group.Course.Equals(course))
+                            Group group = new Group(course);
+                            group.AddClient(client);
+                            client.DeleteCourseRequest(course);
+                            Groups.Add(group);
+                            c--;
+                        }
+                        else
+                        {
+                            Group group1 = null;
+                            var add = false;
+                            foreach (var group in Groups)
                             {
-                                if (group.CanAddClient())
+                                if (group.Course.Equals(course))
                                 {
-                                    group.AddClient(client);
-                                    client.DeleteCourseRequest(course);
-                                    c--;
-                                    client.JoinGroup(group);
-                                    add = true;
-                                    break;
+                                    if (group.CanAddClient())
+                                    {
+                                        group.AddClient(client);
+                                        client.DeleteCourseRequest(course);
+                                        c--;
+                                        add = true;
+                                        break;
+                                    }
+                                    else if (group1 == null) group1 = group;
                                 }
-                                else if (group1 == null) group1 = group;
                             }
-                        }
-                        if (!add && group1 == null) //если нет подходящих групп
-                        {
-                            NewClaim(course, client);
-                            client.DeleteCourseRequest(course);
-                            c--;
-                        }
-                        else if (!add)//нет незаполненных подходящих групп//разделение на 2 группы
-                        {
-                            ShareGroup(group1, client);
-                            client.DeleteCourseRequest(course);
-                            c--;
+                            if (!add && group1 == null) //если нет подходящих групп
+                            {
+                                NewClaim(course, client);
+                                client.DeleteCourseRequest(course);
+                                c--;
+                            }
+                            else if (!add)//нет незаполненных подходящих групп//разделение на 2 группы
+                            {
+                                ShareGroup(group1, client);
+                                client.DeleteCourseRequest(course);
+                                c--;
+                            }
                         }
                     }
                 }

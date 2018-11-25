@@ -51,8 +51,13 @@ namespace CoursesManagerLib
         {
             string s = "Course\n";
             s += Course.ToString()+"\n";
+            s += "Students    " + Clients.Count.ToString() + "\n";
+            int i = 0;
             foreach (Client cl in Clients)
-                s += cl.ToString() + "\n";
+            {
+                i++;
+                s +=i.ToString()+") "+ cl.ToString() + "\n";
+            }
             return s;
         }
 
