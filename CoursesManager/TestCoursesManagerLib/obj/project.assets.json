@@ -5723,23 +5723,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Пользователь\\.nuget\\packages\\": {},
+    "C:\\Users\\Gibadulin Roman\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Пользователь\\Documents\\GitHub\\CoursesManager\\CoursesManager\\TestCoursesManagerLib\\TestCoursesManagerLib.csproj",
+      "projectUniqueName": "D:\\gitHub\\CoursesManager\\CoursesManager\\TestCoursesManagerLib\\TestCoursesManagerLib.csproj",
       "projectName": "TestCoursesManagerLib",
-      "projectPath": "C:\\Users\\Пользователь\\Documents\\GitHub\\CoursesManager\\CoursesManager\\TestCoursesManagerLib\\TestCoursesManagerLib.csproj",
-      "packagesPath": "C:\\Users\\Пользователь\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Пользователь\\Documents\\GitHub\\CoursesManager\\CoursesManager\\TestCoursesManagerLib\\obj\\",
+      "projectPath": "D:\\gitHub\\CoursesManager\\CoursesManager\\TestCoursesManagerLib\\TestCoursesManagerLib.csproj",
+      "packagesPath": "C:\\Users\\Gibadulin Roman\\.nuget\\packages\\",
+      "outputPath": "D:\\gitHub\\CoursesManager\\CoursesManager\\TestCoursesManagerLib\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Пользователь\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Gibadulin Roman\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

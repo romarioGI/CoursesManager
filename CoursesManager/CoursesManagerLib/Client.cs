@@ -1,16 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CoursesManagerLib
 {
-    // IComparable по имени, фамилии, ид
-    // indexof на contains поменять можно
-    // что можно переделать на свойства и где необходимо закрыть чтение/измение 
-    // для скорости переделать листы на хэшсеты
-
+    [Serializable]
     public class Client
     {
         public string Name;
@@ -19,6 +12,7 @@ namespace CoursesManagerLib
         public static int LastId = 0;
         public readonly List<Group> Groups;
         public readonly List<Course> CourseRequests;
+        public int Account { get; private set; }
 
         public Client(string name, string surname)
         {
@@ -27,6 +21,7 @@ namespace CoursesManagerLib
             Id = LastId++;
             Groups = new List<Group>();
             CourseRequests = new List<Course>();
+            Account = 0;
         }
 
         public List<Course> GetCourseRequests()
@@ -37,25 +32,25 @@ namespace CoursesManagerLib
         }
         public void JoinGroup(Group group)
         {
-            if (Groups.IndexOf(group) == -1) Groups.Add(group);
+            if (Groups.Contains(group) == false) Groups.Add(group);
             else throw new ArgumentException("This group is already in the list.");
         }
 
         public void LeaveGroup(Group group)
         {
-            if(Groups.IndexOf(group) != -1) Groups.Remove(group);
+            if(Groups.Contains(group)) Groups.Remove(group);
             else throw new ArgumentException("This group is not in the list.");
         }
 
         public void AddCourseRequest(Course course)
         {
-            if (CourseRequests.IndexOf(course) == -1) CourseRequests.Add(course);
+            if (CourseRequests.Contains(course) == false) CourseRequests.Add(course);
             else throw new ArgumentException("This course is already in the list.");
         }
 
         public void DeleteCourseRequest(Course course)
         {
-            if (CourseRequests.IndexOf(course) != -1) CourseRequests.Remove(course);
+            if (CourseRequests.Contains(course)) CourseRequests.Remove(course);
             else throw new ArgumentException("This course is not in the list.");
         }
         public override int GetHashCode()
@@ -65,6 +60,11 @@ namespace CoursesManagerLib
         public override string ToString()
         {
             return string.Format("Name  {0}\nSurname   {1}\nID  {2}\r\n", Name, Surname, Id);
+        }
+
+        public void ChangeAccountSum(int money)
+        {
+            Account += money;
         }
     }
 }

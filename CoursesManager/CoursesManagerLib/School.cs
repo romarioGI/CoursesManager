@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace CoursesManagerLib
 {
-    // что можно переделать на свойства и где необходимо закрыть чтение/измение 
-    // для скорости переделать листы на хэшсеты либо на сортетсеты
-
-    // возможно стоит создать отдельный класс, в котором будет логика зачисления 
+    [Serializable]
     public struct Claim
     {
         public Course Сourse;
@@ -24,6 +24,8 @@ namespace CoursesManagerLib
             return s;
         }
     }
+
+    [Serializable]
     public class School
     {
         public readonly List<Group> Groups;
@@ -171,6 +173,29 @@ namespace CoursesManagerLib
                 }
 
             }
+        }
+
+        public static void Serialize(string filePath, School school)
+        {
+            var stream = new FileStream(filePath, FileMode.OpenOrCreate);
+            using (stream)
+            {
+                var f = new BinaryFormatter();
+                f.Serialize(stream, school);
+            }
+        }
+
+        public static School Deserialize(string filePath)
+        {
+            var stream = new FileStream(filePath, FileMode.Open);
+            School res = null;
+            using (stream)
+            {
+                var f = new BinaryFormatter();
+                res = (School)f.Deserialize(stream);
+            }
+
+            return res;
         }
     }
 }

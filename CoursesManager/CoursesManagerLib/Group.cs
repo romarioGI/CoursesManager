@@ -5,18 +5,18 @@ namespace CoursesManagerLib
 {
     // поля и свойства с большой буквы
     // что можно переделать на свойства и где необходимо закрыть чтение/измение 
-
+    [Serializable]
     public class Group
     {
         public readonly Course Course;
         public readonly List<Client> Clients;
-        public readonly Attedance Attendance;
+        public readonly Attendance Attendance;
 
         public Group(Course course) //создание новой группы
         {
             Course = course;
             Clients = new List<Client>();
-            Attendance = new Attedance();
+            Attendance = new Attendance();
         }
 
         public bool CanAddClient()
