@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 namespace CoursesManagerLib
 {
-    // поля и свойства с большой буквы
-    // что можно переделать на свойства и где необходимо закрыть чтение/измение 
     [Serializable]
     public class Group
     {
@@ -12,7 +10,7 @@ namespace CoursesManagerLib
         public readonly List<Client> Clients;
         public readonly Attendance Attendance;
 
-        public Group(Course course) //создание новой группы
+        public Group(Course course)
         {
             Course = course;
             Clients = new List<Client>();
@@ -23,37 +21,41 @@ namespace CoursesManagerLib
         {
             return (Clients.Count < 10);
         }
+
         public void AddClient(Client client) //добавление клиента в группу
         {
-            if (Clients.Count > 9) throw new ArgumentException("This group is full.");
-            else
-            {
-                Clients.Add(client);
-                client.JoinGroup(this);
-            }
+            if (Clients.Count > 9)
+                throw new ArgumentException("This group is full.");
+
+            Clients.Add(client);
+            client.JoinGroup(this);
+
         }
 
         public int GetCount()
         {
             return Clients.Count;
         }
+
         public void RemoveClient(Client client) //удаление клиента в группу
         {
-            if (Clients.Count < 6) throw new ArgumentException("This group is too small.");
-            else
-            {
-                Clients.Remove(client); //сработает ли? может надо дописать сравнение для данного типа?
-                client.LeaveGroup(this);
-            }
+            if (Clients.Count < 6)
+                throw new ArgumentException("This group is too small.");
+
+            if (Clients.Contains(client) == false)
+                throw new ArgumentException("This client is not a member of this group.");
+
+            Clients.Remove(client); //сработает ли? может надо дописать сравнение для данного типа?
+            client.LeaveGroup(this);
         }
 
         public override string ToString()
         {
-            string s = "Course\n";
+            var s = "Course\n";
             s += Course.ToString()+"\n";
             s += "Students    " + Clients.Count.ToString() + "\n";
-            int i = 0;
-            foreach (Client cl in Clients)
+            var i = 0;
+            foreach (var cl in Clients)
             {
                 i++;
                 s +=i.ToString()+") "+ cl.ToString() + "\n";
@@ -63,7 +65,7 @@ namespace CoursesManagerLib
 
         public bool FindClient(Client client)
         {
-            throw new NotImplementedException();
+            return Clients.Contains(client);
         }
     }
 }

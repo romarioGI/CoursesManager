@@ -6,24 +6,11 @@ namespace CoursesManagerLib
     [Serializable]
     public class Attendance
     {
-        [Serializable]
-        private struct Date
-        {
-            public DateTime Day;
-            public bool IsAttended;
-
-            public Date(DateTime day, bool isAttended)
-            {
-                Day = day;
-                IsAttended = isAttended;
-            }
-        }
-
-        private Dictionary<Client, List<Date>> _attendance;
+        private SortedList<Client, SortedList<DateTime, bool>> _attendance;
 
         public Attendance()
         {
-            _attendance= new Dictionary<Client, List<Date>>();
+            _attendance= new SortedList<Client, SortedList<DateTime, bool>>(new ClientNameComparator());
         }
 
         public void MarkAttendance(List<Client> allClients, List<Client> attendantClients, DateTime date)
@@ -31,23 +18,22 @@ namespace CoursesManagerLib
             foreach (var c in allClients)
             {
                 if (_attendance.ContainsKey(c) == false)
-                    _attendance.Add(c, new List<Date>());
+                    _attendance.Add(c, new SortedList<DateTime, bool>());
                 if (attendantClients.Contains(c))
-                    _attendance[c].Add(new Date(date, true));
+                    _attendance[c].Add(date, true);
                 else
-                    _attendance[c].Add(new Date(date, false));
+                    _attendance[c].Add(date, false);
             }
         }
 
-        public void RemoveClient(Client client)
+        public SortedList<Client, SortedList<DateTime, bool>> GetAttendance(List<Client> clients)
         {
-            _attendance.Remove(client);
-        }
+            var res = new SortedList<Client, SortedList<DateTime, bool>>();
+            foreach (var c in _attendance)
+                if (clients.Contains(c.Key))
+                    res.Add(c.Key, c.Value);
 
-        public void RemoveClients(List<Client> clients)
-        {
-            foreach (var c in clients)
-                RemoveClient(c);
+            return res;
         }
     }
 }

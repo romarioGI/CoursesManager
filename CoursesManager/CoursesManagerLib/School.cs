@@ -8,18 +8,20 @@ namespace CoursesManagerLib
     [Serializable]
     public struct Claim
     {
-        public Course Сourse;
-        public List<Client> Сlients;
+        public readonly Course Сourse;
+        public readonly List<Client> Сlients;
+
         public Claim(Course сourse)
         {
             Сourse = сourse;
             Сlients = new List<Client>();
         }
+
         public override string ToString()
         {
-            string s = "";
+            var s = "";
             s += this.Сourse.ToString();
-            foreach (Client cl in this.Сlients)
+            foreach (var cl in this.Сlients)
                 s += cl.ToString();
             return s;
         }
@@ -38,6 +40,7 @@ namespace CoursesManagerLib
             Clients = new HashSet<Client>();
             Claims = new List<Claim>();
         }
+
         public void Admission() //зачисления клиентов
         {
             foreach (Client client in Clients)
@@ -93,6 +96,7 @@ namespace CoursesManagerLib
             }
             ViewClaims();
         }
+
         public void NewClaim(Course course, Client client)
         {
             var add = false;
@@ -113,6 +117,7 @@ namespace CoursesManagerLib
                 Claims.Add(claim);
             }
         }
+
         public void ShareGroup(Group group1, Client client)
         {
             Groups.Remove(group1);
@@ -140,12 +145,13 @@ namespace CoursesManagerLib
             Groups.Add(group1);
             Groups.Add(group2);
         }
+
         public void ViewClaims()
         {
-            for (int c=0;c<Claims.Count;c++)
-            //foreach (var claim in Claims)
+            for (var c = 0; c < Claims.Count; c++)
+                //foreach (var claim in Claims)
             {
-                Claim claim = Claims[c];
+                var claim = Claims[c];
                 var k = claim.Сlients.Count;
                 var m = (k + k / 10 - 1) / (k / 10 + 1);
                 if (k > 4)
@@ -159,14 +165,17 @@ namespace CoursesManagerLib
                             gr.AddClient(claim.Сlients[j]);
                             //claim.Сlients[j].JoinGroup(gr);
                         }
+
                         Groups.Add(gr);
                     }
+
                     gr = new Group(claim.Сourse);
                     for (var l = k / 10 * m; l < k; l++)
                     {
                         gr.AddClient(claim.Сlients[l]);
                         //claim.Сlients[l].JoinGroup(gr);
                     }
+
                     Groups.Add(gr);
                     Claims.Remove(claim);
                     c--;

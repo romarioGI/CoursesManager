@@ -1,18 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace CoursesManagerLib
 {
     [Serializable]
     public class Client
     {
-        public string Name;
-        public string Surname;
+        private string _name;
+        private string _surname;
+
         public readonly int Id;
         public static int LastId = 0;
         public readonly List<Group> Groups;
         public readonly List<Course> CourseRequests;
-        public int Account { get; private set; }
+
+        public BigInteger Account { get; private set; }
+
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException();
+                if (value.Length == 0)
+                    throw new ArgumentException();
+                _name = value;
+            }
+        }
+
+        public string Surname
+        {
+            get { return _surname; }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException();
+                if (value.Length == 0)
+                    throw new ArgumentException();
+                _surname = value;
+            }
+        }
 
         public Client(string name, string surname)
         {
@@ -30,6 +59,7 @@ namespace CoursesManagerLib
                 return CourseRequests;
             else return null;
         }
+
         public void JoinGroup(Group group)
         {
             if (Groups.Contains(group) == false) Groups.Add(group);
@@ -53,10 +83,12 @@ namespace CoursesManagerLib
             if (CourseRequests.Contains(course)) CourseRequests.Remove(course);
             else throw new ArgumentException("This course is not in the list.");
         }
+
         public override int GetHashCode()
         {
             return Id;
         }
+
         public override string ToString()
         {
             return string.Format("Name  {0}\nSurname   {1}\nID  {2}\r\n", Name, Surname, Id);
@@ -65,6 +97,18 @@ namespace CoursesManagerLib
         public void ChangeAccountSum(int money)
         {
             Account += money;
+        }
+    }
+
+    internal class ClientNameComparator : IComparer<Client>
+    {
+        public int Compare(Client x, Client y)
+        {
+            var res = string.Compare(x.Surname, y.Surname);
+            if (res != 0)
+                return res;
+            res = string.Compare(x.Name, y.Name);
+            return res;
         }
     }
 }
