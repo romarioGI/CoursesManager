@@ -90,6 +90,11 @@ namespace CoursesManagerLib
             return s;
         }
 
+        public SortedList<Client, SortedList<DateTime, bool>> GetAttendance()
+        {
+            return Attendance.GetAttendance(_сlients);
+        }
+
         public bool FindClient(Client client)
         {
             return _сlients.Contains(client);

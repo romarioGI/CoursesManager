@@ -117,6 +117,7 @@ namespace CoursesManagerLib
         }
     }
 
+    [Serializable]
     internal class ClientNameComparator : IComparer<Client>
     {
         public int Compare(Client x, Client y)
