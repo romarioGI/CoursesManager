@@ -29,9 +29,15 @@ namespace CoursesManagerLib
             CourseRequests = new List<Course>();
         }
 
+        public List<Course> GetCourseRequests()
+        {
+            if (CourseRequests.Count != 0)
+                return CourseRequests;
+            else return null;
+        }
         public void JoinGroup(Group group)
         {
-            if (Groups.IndexOf(group) != -1) Groups.Add(group);
+            if (Groups.IndexOf(group) == -1) Groups.Add(group);
             else throw new ArgumentException("This group is already in the list.");
         }
 
@@ -43,7 +49,7 @@ namespace CoursesManagerLib
 
         public void AddCourseRequest(Course course)
         {
-            if (CourseRequests.IndexOf(course) != -1) CourseRequests.Add(course);
+            if (CourseRequests.IndexOf(course) == -1) CourseRequests.Add(course);
             else throw new ArgumentException("This course is already in the list.");
         }
 
@@ -55,6 +61,10 @@ namespace CoursesManagerLib
         public override int GetHashCode()
         {
             return Id;
+        }
+        public override string ToString()
+        {
+            return string.Format("Name  {0}\nSurname   {1}\nID  {2}\r\n", Name, Surname, Id);
         }
     }
 }

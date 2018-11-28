@@ -1,0 +1,6 @@
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerLib\bin\Debug\CoursesManagerLib.dll
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerLib\bin\Debug\CoursesManagerLib.pdb
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerLib\obj\Debug\CoursesManagerLib.csprojAssemblyReference.cache
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerLib\obj\Debug\CoursesManagerLib.csproj.CoreCompileInputs.cache
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerLib\obj\Debug\CoursesManagerLib.dll
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerLib\obj\Debug\CoursesManagerLib.pdb
