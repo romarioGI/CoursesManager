@@ -137,8 +137,13 @@ namespace WpfApp1
                         {
                             string s = "";
                             s += cl.ToString() + "\n";
-                            foreach (Group gr in cl.Groups)
+                            //foreach (Group gr in cl.Groups)
+                            for (var i = 0; i < cl.CountGroups; i++)
+                            {
+                                var gr = cl.GetGroup(i);
                                 s += gr.ToString() + "\n";
+                            }
+
                             ShowPanel.Text = s;
                             add = true;
                             break;
@@ -163,24 +168,34 @@ namespace WpfApp1
             {
                 if (int.TryParse(TextBoxPersID.Text, out id))
                 {
-                    bool add = false;
-                    foreach (Client cl in school.Clients)
+                    var add = false;
+                    foreach (var cl in school.Clients)
                         if (cl.Id == id)
                         {
-                            foreach(Group gr in cl.Groups)
-                                if(gr.Course==CorseRequest())
+                            //foreach (var gr in cl.Groups)
+                            for (var i = 0; i < cl.CountGroups; i++)
+                            {
+                                var gr = cl.GetGroup(i);
+                                if (gr.Course == CorseRequest())
                                 {
                                     LabelPersIsAddClaim.Content = "You have group with this course";
                                     add = true;
                                     break;
                                 }
-                            foreach (Course  cs in cl.CourseRequests)
+                            }
+
+                            //foreach (Course  cs in cl.CourseRequests)
+                            for (var i = 0; i < cl.CountCourseRequests; i++)
+                            {
+                                var cs = cl.GetCourseRequest(i);
                                 if (cs == CorseRequest())
                                 {
                                     LabelPersIsAddClaim.Content = "You have Request with this course";
                                     add = true;
                                     break;
                                 }
+                            }
+
                             if (add)
                                 break;
                             cl.AddCourseRequest(CorseRequest());

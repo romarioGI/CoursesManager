@@ -9,11 +9,21 @@ namespace CoursesManagerLib
     {
         private string _name;
         private string _surname;
+        private readonly List<Group> _groups;
+        private readonly List<Course> _courseRequests;
 
         public readonly int Id;
         public static int LastId = 0;
-        public readonly List<Group> Groups;
-        public readonly List<Course> CourseRequests;
+
+        public int CountGroups
+        {
+            get { return _groups.Count; }
+        }
+
+        public int CountCourseRequests
+        {
+            get { return _courseRequests.Count; }
+        }
 
         public BigInteger Account { get; private set; }
 
@@ -48,40 +58,47 @@ namespace CoursesManagerLib
             Name = name;
             Surname = surname;
             Id = LastId++;
-            Groups = new List<Group>();
-            CourseRequests = new List<Course>();
+            _groups = new List<Group>();
+            _courseRequests = new List<Course>();
             Account = 0;
-        }
-
-        public List<Course> GetCourseRequests()
-        {
-            if (CourseRequests.Count != 0)
-                return CourseRequests;
-            else return null;
         }
 
         public void JoinGroup(Group group)
         {
-            if (Groups.Contains(group) == false) Groups.Add(group);
+            if (_groups.Contains(group) == false) _groups.Add(group);
             else throw new ArgumentException("This group is already in the list.");
         }
 
         public void LeaveGroup(Group group)
         {
-            if(Groups.Contains(group)) Groups.Remove(group);
+            if(_groups.Contains(group)) _groups.Remove(group);
             else throw new ArgumentException("This group is not in the list.");
+        }
+
+        public Group GetGroup(int index)
+        {
+            if (index >= CountGroups)
+                return null;
+            return _groups[index];
         }
 
         public void AddCourseRequest(Course course)
         {
-            if (CourseRequests.Contains(course) == false) CourseRequests.Add(course);
+            if (_courseRequests.Contains(course) == false) _courseRequests.Add(course);
             else throw new ArgumentException("This course is already in the list.");
         }
 
         public void DeleteCourseRequest(Course course)
         {
-            if (CourseRequests.Contains(course)) CourseRequests.Remove(course);
+            if (_courseRequests.Contains(course)) _courseRequests.Remove(course);
             else throw new ArgumentException("This course is not in the list.");
+        }
+
+        public Course GetCourseRequest(int index)
+        {
+            if (index >= CountCourseRequests)
+                return null;
+            return _courseRequests[index];
         }
 
         public override int GetHashCode()

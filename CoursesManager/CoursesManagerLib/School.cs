@@ -41,19 +41,20 @@ namespace CoursesManagerLib
             Claims = new List<Claim>();
         }
 
+        //можно немного упростить код
         public void Admission() //зачисления клиентов
         {
-            foreach (Client client in Clients)
+            foreach (var client in Clients)
             {
-                if (client.GetCourseRequests() != null)
+                if (client.CountCourseRequests != 0)
                 {
-                    for(int c=0;c<client.CourseRequests.Count;c++)
+                    for (var c = 0; c < client.CountCourseRequests; c++)
                     //foreach (Course course in client.GetCourseRequests())
                     {
-                            Course course = client.CourseRequests[c];
+                        var course = client.GetCourseRequest(c);
                         if (course.Format == Format.Individual)
                         {
-                            Group group = new Group(course);
+                            var group = new Group(course);
                             group.AddClient(client);
                             client.DeleteCourseRequest(course);
                             Groups.Add(group);
@@ -78,13 +79,14 @@ namespace CoursesManagerLib
                                     else if (group1 == null) group1 = group;
                                 }
                             }
+
                             if (!add && group1 == null) //если нет подходящих групп
                             {
                                 NewClaim(course, client);
                                 client.DeleteCourseRequest(course);
                                 c--;
                             }
-                            else if (!add)//нет незаполненных подходящих групп//разделение на 2 группы
+                            else if (!add) //нет незаполненных подходящих групп//разделение на 2 группы
                             {
                                 ShareGroup(group1, client);
                                 client.DeleteCourseRequest(course);
@@ -94,9 +96,11 @@ namespace CoursesManagerLib
                     }
                 }
             }
+
             ViewClaims();
         }
 
+        //пробегание форычем можно заменить на .Contains, правда нужно проверить как .Contains  сравнивает объекты
         public void NewClaim(Course course, Client client)
         {
             var add = false;
@@ -118,6 +122,8 @@ namespace CoursesManagerLib
             }
         }
 
+        //так как группа это класс, то переменные gr и groop1 это один и тот же объект
+        //нужен метод копирования?
         public void ShareGroup(Group group1, Client client)
         {
             Groups.Remove(group1);
@@ -125,19 +131,19 @@ namespace CoursesManagerLib
             var group2 = group1;
             for (var i = gr.GetCount() - 1; i >= group1.GetCount() / 2; i--)
             {
-                group1.RemoveClient(gr.Clients[i]);
+                group1.RemoveClient(gr[i]);
             }
             for (var i = 0; i < group1.GetCount() / 2; i++)
             {
-                group2.RemoveClient(gr.Clients[i]);
+                group2.RemoveClient(gr[i]);
             }
-            foreach (var cl in group1.Clients)
+            foreach (var cl in group1)
             {
                 cl.LeaveGroup(gr);
                 cl.JoinGroup(group1);
             }
             group2.AddClient(client);
-            foreach (var cl in group2.Clients)
+            foreach (var cl in group2)
             {
                 cl.LeaveGroup(gr);
                 cl.JoinGroup(group2);

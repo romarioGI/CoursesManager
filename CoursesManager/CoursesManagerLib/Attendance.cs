@@ -35,5 +35,10 @@ namespace CoursesManagerLib
 
             return res;
         }
+
+        public SortedList<Client, SortedList<DateTime, bool>> GetFullAttendance()
+        {
+            return GetAttendance((List<Client>)_attendance.Keys);
+        }
     }
 }
