@@ -59,6 +59,10 @@
             <Button x:Name="ButtonClientWindow" Content="ClientWindow" HorizontalAlignment="Left" Height="63" Margin="899,600,0,0" VerticalAlignment="Top" Width="190" FontSize="20" Click="ButtonClientWindow_Click" Background="#FF6D8EDA"/>
             <TextBox x:Name="TextBoxIDSearch" HorizontalAlignment="Left" Height="45" Margin="899,430,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Background="#FFBAB8E5" FontSize="20" />
             <Label x:Name="LabelIDSearch" Content="" HorizontalAlignment="Left" Margin="900,382,0,0" VerticalAlignment="Top" Height="43" Width="189" FontSize="20" />
+            <ToolBar x:Name="toolBar" Background="#FFF67979" HorizontalAlignment="Left" Height="61" VerticalAlignment="Top" Width="1190">
+                <Button x:Name="SaveButton" FontSize="20" Content="Save" Height="56" VerticalAlignment="Top" Width="150" Click="SaveButton_Click"/>
+                <Button x:Name="LoadButton" FontSize="20" Content="Load" Height="56" VerticalAlignment="Top" Width="150" Click="LoadButton_Click"/>
+            </ToolBar>
         </Grid>
         <Grid x:Name="GridClient" Visibility="Hidden" Background="#FFD67979" Opacity="0.965" Width="1190" Height="780" Panel.ZIndex="4">
             <ComboBox x:Name="BoxFormat" HorizontalAlignment="Left" Height="45" Margin="106,50,0,0" VerticalAlignment="Top" Width="180" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="20" SelectedIndex="0" SelectionChanged="BoxFormat_SelectionChanged">
