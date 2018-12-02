@@ -57,7 +57,7 @@
             <Button x:Name="ButtonAdmission" Content="Admission" HorizontalAlignment="Left" Height="63" Margin="899,303,0,0" VerticalAlignment="Top" Width="190" FontSize="20" Click="ButtonAdmission_Click"/>
             <Button x:Name="ButtonID" Content="ShowGroupsId" HorizontalAlignment="Left" Height="63" Margin="899,500,0,0" VerticalAlignment="Top" Width="190" FontSize="20" Click="ButtonID_Click"/>
             <Button x:Name="ButtonClientWindow" Content="ClientWindow" HorizontalAlignment="Left" Height="63" Margin="899,600,0,0" VerticalAlignment="Top" Width="190" FontSize="20" Click="ButtonClientWindow_Click" Background="#FF6D8EDA"/>
-            <TextBox x:Name="TextBoxIDSearch" HorizontalAlignment="Left" Height="45" Margin="899,430,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Background="#FFBAB8E5" FontSize="20" />
+            <TextBox x:Name="TextBoxIDSearch" HorizontalAlignment="Left" Height="45" Margin="899,430,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Background="#FFBAB8E5" FontSize="20" />
             <Label x:Name="LabelIDSearch" Content="" HorizontalAlignment="Left" Margin="900,382,0,0" VerticalAlignment="Top" Height="43" Width="189" FontSize="20" />
             <ToolBar x:Name="toolBar" Background="#FFF67979" HorizontalAlignment="Left" Height="61" VerticalAlignment="Top" Width="1190">
                 <Button x:Name="SaveButton" FontSize="20" Content="Save" Height="56" VerticalAlignment="Top" Width="150" Click="SaveButton_Click"/>

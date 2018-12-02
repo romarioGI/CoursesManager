@@ -34,8 +34,12 @@ namespace WpfApp1
         {
             string s = "";
             s += school.Groups.Count.ToString()+"   groups\n";
+            int i = 0;
             foreach (Group gr in school.Groups)
-                s += gr.ToString() + "\n";
+            {
+                i++;
+                s += i.ToString()+")"+gr.ToString() + "\n";
+            }
             ShowPanel.Text = s;
         }
 
@@ -79,8 +83,12 @@ namespace WpfApp1
         {
             string s = "";
             s += school.Clients.Count.ToString() + "  clients\n";
+            int i = 0;
             foreach (Client cl in school.Clients)
-                s += cl.ToString() + "\n";
+            {
+                i++;
+                s +=i.ToString()+")"+ cl.ToString();
+            }
             ShowPanel.Text = s;
         }
 
