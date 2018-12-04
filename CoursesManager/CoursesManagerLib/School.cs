@@ -41,7 +41,6 @@ namespace CoursesManagerLib
             Claims = new List<Claim>();
         }
 
-        //можно немного упростить код
         public void Admission() //зачисления клиентов
         {
             foreach (var client in Clients)
@@ -100,7 +99,6 @@ namespace CoursesManagerLib
             ViewClaims();
         }
 
-        //пробегание форычем можно заменить на .Contains, правда нужно проверить как .Contains  сравнивает объекты
         public void NewClaim(Course course, Client client)
         {
             var add = false;
@@ -122,8 +120,6 @@ namespace CoursesManagerLib
             }
         }
 
-        //так как группа это класс, то переменные gr и groop1 это один и тот же объект
-        //нужен метод копирования?
         public void ShareGroup(Group group1, Client client)
         {
             Groups.Remove(group1);
