@@ -8,7 +8,7 @@ namespace CoursesManagerLib
     [Serializable]
     public class Group : IEnumerable<Client>
     {
-        private static int _lastId = 0;
+        public static int LastId = -1;
         private static ClientNameComparator _clientCmp = new ClientNameComparator();
         private readonly Attendance _attendance;
 
@@ -29,7 +29,7 @@ namespace CoursesManagerLib
 
         public Group(Course course)
         {
-            Id = _lastId++;
+            Id = ++LastId;
             Course = course;
             _clients = new List<Client>();
             _attendance = new Attendance();

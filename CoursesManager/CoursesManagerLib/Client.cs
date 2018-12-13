@@ -13,7 +13,7 @@ namespace CoursesManagerLib
         private readonly List<Course> _courseRequests;
 
         public readonly int Id;
-        public static int LastId = 0;
+        public static int LastId = -1;
 
         public int CountGroups
         {
@@ -57,7 +57,7 @@ namespace CoursesManagerLib
         {
             Name = name;
             Surname = surname;
-            Id = LastId++;
+            Id = ++LastId;
             _groups = new List<Group>();
             _courseRequests = new List<Course>();
             Account = 0;
@@ -111,7 +111,7 @@ namespace CoursesManagerLib
             return string.Format("Name  {0}\nSurname   {1}\nID  {2}\r\n", Name, Surname, Id);
         }
 
-        public void ChangeAccountSum(int money)
+        public void ChangeAccountSum(BigInteger money)
         {
             Account += money;
         }

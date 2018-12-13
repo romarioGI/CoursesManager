@@ -37,3 +37,7 @@ D:\gitHub\CoursesManager\CoursesManager\WpfApp1\obj\Debug\WpfApp1.pdb
 C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\WpfApp1\bin\Debug\CoursesManagerWPF.exe
 C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\WpfApp1\bin\Debug\CoursesManagerWPF.pdb
 C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\WpfApp1\bin\Debug\CoursesManagerWPF.exe.config
+D:\gitHub\CoursesManager\CoursesManager\WpfApp1\obj\Debug\SetAttendanceWindow.g.cs
+D:\gitHub\CoursesManager\CoursesManager\WpfApp1\obj\Debug\SetAttendanceWindow.baml
+D:\gitHub\CoursesManager\CoursesManager\WpfApp1\obj\Debug\GetAttendanceWindow.baml
+D:\gitHub\CoursesManager\CoursesManager\WpfApp1\obj\Debug\GetAttendanceWindow.g.cs
