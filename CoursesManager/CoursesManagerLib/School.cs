@@ -201,6 +201,12 @@ namespace CoursesManagerLib
                 res = (School)f.Deserialize(stream);
             }
 
+            foreach (var c in res.Clients)
+                Client.LastId = Math.Max(Client.LastId, c.Id);
+
+            foreach (var g in res.Groups)
+                Group.LastId = Math.Max(Group.LastId, g.Id);
+
             return res;
         }
     }

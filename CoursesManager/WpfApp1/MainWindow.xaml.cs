@@ -14,7 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CoursesManagerLib;
 using System.Windows.Forms;
-using CoursesManagerWPF;
+using System.Numerics;
+using MessageBox = System.Windows.MessageBox;
 
 namespace WpfApp1
 {
@@ -24,10 +25,20 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
         School school;
+
+        private GetAttendanceWindow _getAttendanceWindow;
+        private SetAttendanceWindow _setAttendanceWindow;
+
         public MainWindow()
         {
             InitializeComponent();
+            this.Show();
             school = new School();
+
+            _getAttendanceWindow = new GetAttendanceWindow(school);
+            _getAttendanceWindow.Owner = this;
+            _setAttendanceWindow = new SetAttendanceWindow(school);
+            _setAttendanceWindow.Owner = this;
         }
 
         private void ShowGroups_Click(object sender, RoutedEventArgs e)
@@ -116,10 +127,22 @@ namespace WpfApp1
         private void ButtonAddClaim_Click(object sender, RoutedEventArgs e)
         {
             LabelIsAddClaim.Content = "";
-                Client cl = new Client(TextBoxName.Text,TextBoxSurname.Text);
-                cl.AddCourseRequest(CourseRequest());
-                school.Clients.Add(cl);
-                TextBoxID.Text = cl.Id.ToString();
+
+            Client cl = null;
+
+            try
+            {
+                cl = new Client(TextBoxName.Text, TextBoxSurname.Text);
+            }
+            catch (Exception exception)
+            {
+                LabelIsAddClaim.Content = "Name and Surname must not be empty";
+                return;
+            }
+            cl.AddCourseRequest(CourseRequest());
+            school.Clients.Add(cl);
+
+            TextBoxID.Text = cl.Id.ToString();
             LabelIsAddClaim.Content = "Your claim is add, see your ID";
         }
 
@@ -215,7 +238,15 @@ namespace WpfApp1
 
                             if (add)
                                 break;
-                            cl.AddCourseRequest(PersCourseRequest());
+                            try
+                            {
+                                cl.AddCourseRequest(PersCourseRequest());
+                            }
+                            catch (Exception exception)
+                            {
+                                LabelPersIsAddClaim.Content = "This claim already exists";
+                                return;
+                            }                          
                             add = true;
                             LabelPersIsAddClaim.Content = "Your claim is add";
                             break;
@@ -279,6 +310,7 @@ namespace WpfApp1
                             TextBoxPersID.Text = cl.Id.ToString();
                             TextBoxPersName.Text = cl.Name;
                             TextBoxPersSurname.Text = cl.Surname;
+                            textBoxGetMoney.Text = cl.Account.ToString();
                             add = true;
                             break;
                         }
@@ -306,20 +338,46 @@ namespace WpfApp1
                 school = School.Deserialize(ofd.FileName);
                 System.Windows.Forms.MessageBox.Show("Successfully load from\n" + ofd.FileName);
             }
+
+            _getAttendanceWindow = new GetAttendanceWindow(school);
+            _getAttendanceWindow.Owner = this;
+            _setAttendanceWindow = new SetAttendanceWindow(school);
+            _setAttendanceWindow.Owner = this;
         }
 
         private void ButtonSetAttendance_Click(object sender, RoutedEventArgs e)
         {
-            //SetAttendanceWindow window = new SetAttendanceWindow(school,);
-            //window.Show();
-            //this.Close();
+            _setAttendanceWindow.UpdateInfo();
+            this.Visibility = Visibility.Hidden;
+            _setAttendanceWindow.Visibility = Visibility.Visible;
         }
 
         private void ButtonGetAttendance_Click(object sender, RoutedEventArgs e)
         {
-            //GetAttendanceWindow window = new GetAttendanceWindow(school, );
-            //window.Show();
-            //this.Close();
+            _getAttendanceWindow.UpdateInfo();
+            this.Visibility = Visibility.Hidden;
+            _getAttendanceWindow.Visibility = Visibility.Visible;
+        }
+
+        private void ButtonChangeMoney_Click(object sender, RoutedEventArgs e)
+        {
+            var s = TextBoxMoney.Text;
+            var money = new BigInteger(0);
+            if (!BigInteger.TryParse(s, out money))
+            {
+                MessageBox.Show("Uncorrect count of money.");
+                return;
+            }
+
+            Client client = null;
+            var Id = int.Parse(TextBoxPersID.Text);
+            foreach (var c in school.Clients)
+            {
+                if (c.Id == Id)
+                    client = c;
+            }
+            client.ChangeAccountSum(money);
+            textBoxGetMoney.Text = client.Account.ToString();
         }
     }
 }

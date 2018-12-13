@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,6 +57,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GetAttendanceWindow.xaml.cs">
+      <DependentUpon>GetAttendanceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SetAttendanceWindow.xaml.cs">
+      <DependentUpon>SetAttendanceWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="GetAttendanceWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -68,6 +79,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SetAttendanceWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -99,10 +114,6 @@
     <ProjectReference Include="..\CoursesManagerLib\CoursesManagerLib.csproj">
       <Project>{158b4f88-324a-4f91-835b-43d22f9ee9b4}</Project>
       <Name>CoursesManagerLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CoursesManagerWPF\CoursesManagerWPF\CoursesManagerWPF.csproj">
-      <Project>{18108c39-20cf-4413-87b6-760d3d35219e}</Project>
-      <Name>CoursesManagerWPF</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
