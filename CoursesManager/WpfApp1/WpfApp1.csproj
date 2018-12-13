@@ -100,6 +100,10 @@
       <Project>{158b4f88-324a-4f91-835b-43d22f9ee9b4}</Project>
       <Name>CoursesManagerLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CoursesManagerWPF\CoursesManagerWPF\CoursesManagerWPF.csproj">
+      <Project>{18108c39-20cf-4413-87b6-760d3d35219e}</Project>
+      <Name>CoursesManagerWPF</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

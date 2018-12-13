@@ -34,3 +34,6 @@ D:\gitHub\CoursesManager\CoursesManager\WpfApp1\obj\Debug\WpfApp1.csproj.CoreCom
 D:\gitHub\CoursesManager\CoursesManager\WpfApp1\obj\Debug\WpfApp1.csproj.CopyComplete
 D:\gitHub\CoursesManager\CoursesManager\WpfApp1\obj\Debug\WpfApp1.exe
 D:\gitHub\CoursesManager\CoursesManager\WpfApp1\obj\Debug\WpfApp1.pdb
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\WpfApp1\bin\Debug\CoursesManagerWPF.exe
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\WpfApp1\bin\Debug\CoursesManagerWPF.pdb
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\WpfApp1\bin\Debug\CoursesManagerWPF.exe.config

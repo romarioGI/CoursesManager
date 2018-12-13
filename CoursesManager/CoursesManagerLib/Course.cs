@@ -67,10 +67,10 @@ namespace CoursesManagerLib
 
         public override string ToString()
         {
-            return String.Format("Language  {0}\nLevel   {1}\nDuration  {2}\nFormat   {3}\nPrice   {4}\nIntensity   {5}\r\n", Language, Level, Duration, Format,Price, Intensity);
+            return String.Format("Language  {0}\nLevel   {1}\nDuration  {2}\nFormat   {3}\nPrice   {4}\nIntensity   {5}\r\n", Language, Level, Duration, Format, Price, Intensity);
         }
     }
-    
+
     public enum Format
     {
         Individual,

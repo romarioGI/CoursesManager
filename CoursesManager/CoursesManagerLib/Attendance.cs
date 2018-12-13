@@ -6,11 +6,11 @@ namespace CoursesManagerLib
     [Serializable]
     public class Attendance
     {
-        private SortedList<Client, SortedList<DateTime, bool>> _attendance;
+        private readonly SortedList<Client, SortedList<DateTime, bool>> _attendance;
 
         public Attendance()
         {
-            _attendance= new SortedList<Client, SortedList<DateTime, bool>>(new ClientNameComparator());
+            _attendance = new SortedList<Client, SortedList<DateTime, bool>>(new ClientNameComparator());
         }
 
         public void MarkAttendance(List<Client> allClients, List<Client> attendantClients, DateTime date)
@@ -28,7 +28,7 @@ namespace CoursesManagerLib
 
         public SortedList<Client, SortedList<DateTime, bool>> GetAttendance(List<Client> clients)
         {
-            var res = new SortedList<Client, SortedList<DateTime, bool>>();
+            var res = new SortedList<Client, SortedList<DateTime, bool>>(new ClientNameComparator());
             foreach (var c in _attendance)
                 if (clients.Contains(c.Key))
                     res.Add(c.Key, c.Value);

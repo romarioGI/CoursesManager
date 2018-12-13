@@ -1,0 +1,96 @@
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\bin\Debug\CoursesManagerWPF.exe.config
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\bin\Debug\CoursesManagerWPF.exe
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\bin\Debug\CoursesManagerWPF.pdb
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.csprojAssemblyReference.cache
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\MainWindow.g.cs
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\App.g.cs
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CoursesManagerWPF_MarkupCompile.cache
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CoursesManagerWPF_MarkupCompile.lref
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\MainWindow.baml
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.g.resources
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.Properties.Resources.resources
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.csproj.GenerateResource.cache
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.csproj.CoreCompileInputs.cache
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.exe
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.pdb
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\bin\Debug\CoursesManagerLib.dll
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\bin\Debug\CoursesManagerLib.pdb
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\AdmissionWindow.g.cs
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\ClaimWindow.g.cs
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\ClientWindow.g.cs
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CourseWindow.g.cs
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\GetAttendanceWindow.g.cs
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\GroupsWindow.g.cs
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\SetAttendanceWindow.g.cs
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\AdmissionWindow.baml
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\ClaimWindow.baml
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\ClientWindow.baml
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CourseWindow.baml
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\GetAttendanceWindow.baml
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\GroupsWindow.baml
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\SetAttendanceWindow.baml
+C:\Users\Gibadulin Roman\Desktop\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.csproj.CopyComplete
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.csprojAssemblyReference.cache
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\AdmissionWindow.g.cs
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\ClaimWindow.g.cs
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\ClientWindow.g.cs
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\CourseWindow.g.cs
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\GetAttendanceWindow.g.cs
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\GroupsWindow.g.cs
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\MainWindow.g.cs
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\SetAttendanceWindow.g.cs
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\App.g.cs
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\CoursesManagerWPF_MarkupCompile.cache
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\CoursesManagerWPF_MarkupCompile.lref
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.exe
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.pdb
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\bin\Debug\CoursesManagerWPF.exe.config
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\bin\Debug\CoursesManagerWPF.exe
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\bin\Debug\CoursesManagerWPF.pdb
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\bin\Debug\CoursesManagerLib.dll
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\bin\Debug\CoursesManagerLib.pdb
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\AdmissionWindow.baml
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\ClaimWindow.baml
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\ClientWindow.baml
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\CourseWindow.baml
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\GetAttendanceWindow.baml
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\GroupsWindow.baml
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\MainWindow.baml
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\SetAttendanceWindow.baml
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.g.resources
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.Properties.Resources.resources
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.csproj.GenerateResource.cache
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.csproj.CoreCompileInputs.cache
+D:\gitHub\CoursesManager\CoursesManager\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.csproj.CopyComplete
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.csprojAssemblyReference.cache
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\AdmissionWindow.g.cs
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\ClaimWindow.g.cs
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\ClientWindow.g.cs
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CourseWindow.g.cs
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\GetAttendanceWindow.g.cs
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\GroupsWindow.g.cs
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\MainWindow.g.cs
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\SetAttendanceWindow.g.cs
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\App.g.cs
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CoursesManagerWPF_MarkupCompile.cache
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CoursesManagerWPF_MarkupCompile.lref
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.exe
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.pdb
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\bin\Debug\CoursesManagerWPF.exe.config
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\bin\Debug\CoursesManagerWPF.exe
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\bin\Debug\CoursesManagerWPF.pdb
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\bin\Debug\CoursesManagerLib.dll
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\bin\Debug\CoursesManagerLib.pdb
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\AdmissionWindow.baml
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\ClaimWindow.baml
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\ClientWindow.baml
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CourseWindow.baml
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\GetAttendanceWindow.baml
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\GroupsWindow.baml
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\MainWindow.baml
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\SetAttendanceWindow.baml
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.g.resources
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.Properties.Resources.resources
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.csproj.GenerateResource.cache
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.csproj.CoreCompileInputs.cache
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\CoursesManagerWPF\CoursesManagerWPF\obj\Debug\CoursesManagerWPF.csproj.CopyComplete
