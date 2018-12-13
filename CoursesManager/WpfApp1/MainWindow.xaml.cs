@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CoursesManagerLib;
+using System.Windows.Forms;
 
 namespace WpfApp1
 {
@@ -33,8 +34,12 @@ namespace WpfApp1
         {
             string s = "";
             s += school.Groups.Count.ToString()+"   groups\n";
+            int i = 0;
             foreach (Group gr in school.Groups)
-                s += gr.ToString() + "\n";
+            {
+                i++;
+                s += i.ToString()+")"+gr.ToString() + "\n";
+            }
             ShowPanel.Text = s;
         }
 
@@ -78,8 +83,12 @@ namespace WpfApp1
         {
             string s = "";
             s += school.Clients.Count.ToString() + "  clients\n";
+            int i = 0;
             foreach (Client cl in school.Clients)
-                s += cl.ToString() + "\n";
+            {
+                i++;
+                s +=i.ToString()+")"+ cl.ToString();
+            }
             ShowPanel.Text = s;
         }
 
@@ -91,7 +100,8 @@ namespace WpfApp1
                 s += cl.ToString() + "\n";
             ShowPanel.Text = s;
         }
-        public Course CorseRequest ()
+
+        public Course CourseRequest ()
         {
             Course course = new Course(BoxLanguage.Text,int.Parse(BoxIntensity.Text),BoxLevel.Text,(Format)BoxFormat.SelectedItem, int.Parse(LabelDurationAvto.Content.ToString()),int.Parse(LabelPriceAvto.Content.ToString()));
             return course;
@@ -101,7 +111,7 @@ namespace WpfApp1
         {
             LabelIsAddClaim.Content = "";
                 Client cl = new Client(TextBoxName.Text,TextBoxSurname.Text);
-                cl.AddCourseRequest(CorseRequest());
+                cl.AddCourseRequest(CourseRequest());
                 school.Clients.Add(cl);
                 TextBoxID.Text = cl.Id.ToString();
             LabelIsAddClaim.Content = "Your claim is add, see your ID";
@@ -137,8 +147,13 @@ namespace WpfApp1
                         {
                             string s = "";
                             s += cl.ToString() + "\n";
-                            foreach (Group gr in cl.Groups)
+                            //foreach (Group gr in cl.Groups)
+                            for (var i = 0; i < cl.CountGroups; i++)
+                            {
+                                var gr = cl.GetGroup(i);
                                 s += gr.ToString() + "\n";
+                            }
+
                             ShowPanel.Text = s;
                             add = true;
                             break;
@@ -163,27 +178,37 @@ namespace WpfApp1
             {
                 if (int.TryParse(TextBoxPersID.Text, out id))
                 {
-                    bool add = false;
-                    foreach (Client cl in school.Clients)
+                    var add = false;
+                    foreach (var cl in school.Clients)
                         if (cl.Id == id)
                         {
-                            foreach(Group gr in cl.Groups)
-                                if(gr.Course==CorseRequest())
+                            //foreach (var gr in cl.Groups)
+                            for (var i = 0; i < cl.CountGroups; i++)
+                            {
+                                var gr = cl.GetGroup(i);
+                                if (gr.Course == CourseRequest())
                                 {
                                     LabelPersIsAddClaim.Content = "You have group with this course";
                                     add = true;
                                     break;
                                 }
-                            foreach (Course  cs in cl.CourseRequests)
-                                if (cs == CorseRequest())
+                            }
+
+                            //foreach (Course  cs in cl.CourseRequests)
+                            for (var i = 0; i < cl.CountCourseRequests; i++)
+                            {
+                                var cs = cl.GetCourseRequest(i);
+                                if (cs == CourseRequest())
                                 {
                                     LabelPersIsAddClaim.Content = "You have Request with this course";
                                     add = true;
                                     break;
                                 }
+                            }
+
                             if (add)
                                 break;
-                            cl.AddCourseRequest(CorseRequest());
+                            cl.AddCourseRequest(CourseRequest());
                             add = true;
                             LabelPersIsAddClaim.Content = "Your claim is add";
                             break;
@@ -253,6 +278,26 @@ namespace WpfApp1
                     if (!add) LabelIsAddClaim.Content = "Wrong ID";
                 }
                 else LabelIsAddClaim.Content = "Wrong insertion of ID";
+            }
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            var sfd = new SaveFileDialog {Filter = @"Binary file|*.bin"};
+            if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                School.Serialize(sfd.FileName, school);
+                System.Windows.Forms.MessageBox.Show("Successfully saved to\n" + sfd.FileName);
+            }
+        }
+
+        private void LoadButton_Click(object sender, RoutedEventArgs e)
+        {
+            var ofd = new OpenFileDialog {Filter = @"Binary file|*.bin"};
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                school = School.Deserialize(ofd.FileName);
+                System.Windows.Forms.MessageBox.Show("Successfully load from\n" + ofd.FileName);
             }
         }
     }

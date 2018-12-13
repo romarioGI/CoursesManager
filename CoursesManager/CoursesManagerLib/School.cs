@@ -1,29 +1,33 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace CoursesManagerLib
 {
-    // что можно переделать на свойства и где необходимо закрыть чтение/измение 
-    // для скорости переделать листы на хэшсеты либо на сортетсеты
-
-    // возможно стоит создать отдельный класс, в котором будет логика зачисления 
+    [Serializable]
     public struct Claim
     {
-        public Course Сourse;
-        public List<Client> Сlients;
+        public readonly Course Сourse;
+        public readonly List<Client> Сlients;
+
         public Claim(Course сourse)
         {
             Сourse = сourse;
             Сlients = new List<Client>();
         }
+
         public override string ToString()
         {
-            string s = "";
+            var s = "";
             s += this.Сourse.ToString();
-            foreach (Client cl in this.Сlients)
+            foreach (var cl in this.Сlients)
                 s += cl.ToString();
             return s;
         }
     }
+
+    [Serializable]
     public class School
     {
         public readonly List<Group> Groups;
@@ -36,19 +40,21 @@ namespace CoursesManagerLib
             Clients = new HashSet<Client>();
             Claims = new List<Claim>();
         }
-        public void Admission() //зачисления клиентов
+
+        //можно немного упростить код
+        //НЕ МОГУ
+        public void Admission() 
         {
-            foreach (Client client in Clients)
+            foreach (var client in Clients)
             {
-                if (client.GetCourseRequests() != null)
+                if (client.CountCourseRequests != 0)
                 {
-                    for(int c=0;c<client.CourseRequests.Count;c++)
-                    //foreach (Course course in client.GetCourseRequests())
+                    for (var c = 0; c < client.CountCourseRequests; c++)
                     {
-                            Course course = client.CourseRequests[c];
+                        var course = client.GetCourseRequest(c);
                         if (course.Format == Format.Individual)
                         {
-                            Group group = new Group(course);
+                            var group = new Group(course);
                             group.AddClient(client);
                             client.DeleteCourseRequest(course);
                             Groups.Add(group);
@@ -73,13 +79,14 @@ namespace CoursesManagerLib
                                     else if (group1 == null) group1 = group;
                                 }
                             }
+
                             if (!add && group1 == null) //если нет подходящих групп
                             {
                                 NewClaim(course, client);
                                 client.DeleteCourseRequest(course);
                                 c--;
                             }
-                            else if (!add)//нет незаполненных подходящих групп//разделение на 2 группы
+                            else if (!add) //нет незаполненных подходящих групп//разделение на 2 группы
                             {
                                 ShareGroup(group1, client);
                                 client.DeleteCourseRequest(course);
@@ -89,8 +96,11 @@ namespace CoursesManagerLib
                     }
                 }
             }
+
             ViewClaims();
         }
+
+        //пробегание форычем можно заменить на .Contains, правда нужно проверить как .Contains  сравнивает объекты НИЧО НЕ ЗНАЮ
         public void NewClaim(Course course, Client client)
         {
             var add = false;
@@ -111,26 +121,29 @@ namespace CoursesManagerLib
                 Claims.Add(claim);
             }
         }
+
+        //так как группа это класс, то переменные gr и groop1 это один и тот же объект НЕ ПОНЯЛ?
+        //нужен метод копирования?
         public void ShareGroup(Group group1, Client client)
         {
             Groups.Remove(group1);
             var gr = group1;
             var group2 = group1;
-            for (var i = gr.GetCount() - 1; i >= group1.GetCount() / 2; i--)
+            for (var i = gr.GetCount() - 1; i > group1.GetCount() / 2; i--)
             {
-                group1.RemoveClient(gr.Clients[i]);
+                group1.RemoveClient(gr[i]);
             }
             for (var i = 0; i < group1.GetCount() / 2; i++)
             {
-                group2.RemoveClient(gr.Clients[i]);
+                group2.RemoveClient(gr[i]);
             }
-            foreach (var cl in group1.Clients)
+            foreach (var cl in group1)
             {
                 cl.LeaveGroup(gr);
                 cl.JoinGroup(group1);
             }
             group2.AddClient(client);
-            foreach (var cl in group2.Clients)
+            foreach (var cl in group2)
             {
                 cl.LeaveGroup(gr);
                 cl.JoinGroup(group2);
@@ -138,12 +151,12 @@ namespace CoursesManagerLib
             Groups.Add(group1);
             Groups.Add(group2);
         }
+
         public void ViewClaims()
         {
-            for (int c=0;c<Claims.Count;c++)
-            //foreach (var claim in Claims)
+            for (var c = 0; c < Claims.Count; c++)
             {
-                Claim claim = Claims[c];
+                var claim = Claims[c];
                 var k = claim.Сlients.Count;
                 var m = (k + k / 10 - 1) / (k / 10 + 1);
                 if (k > 4)
@@ -155,22 +168,46 @@ namespace CoursesManagerLib
                         for (var j = i * m; j < (i + 1) * m; j++)
                         {
                             gr.AddClient(claim.Сlients[j]);
-                            //claim.Сlients[j].JoinGroup(gr);
                         }
+
                         Groups.Add(gr);
                     }
+
                     gr = new Group(claim.Сourse);
                     for (var l = k / 10 * m; l < k; l++)
                     {
                         gr.AddClient(claim.Сlients[l]);
-                        //claim.Сlients[l].JoinGroup(gr);
                     }
+
                     Groups.Add(gr);
                     Claims.Remove(claim);
                     c--;
                 }
 
             }
+        }
+
+        public static void Serialize(string filePath, School school)
+        {
+            var stream = new FileStream(filePath, FileMode.OpenOrCreate);
+            using (stream)
+            {
+                var f = new BinaryFormatter();
+                f.Serialize(stream, school);
+            }
+        }
+
+        public static School Deserialize(string filePath)
+        {
+            var stream = new FileStream(filePath, FileMode.Open);
+            School res = null;
+            using (stream)
+            {
+                var f = new BinaryFormatter();
+                res = (School)f.Deserialize(stream);
+            }
+
+            return res;
         }
     }
 }

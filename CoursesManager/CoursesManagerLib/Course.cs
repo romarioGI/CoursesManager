@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace CoursesManagerLib
 {
-    // Добавить  сообщения ошибкам
+    [Serializable]
     public class Course : IEquatable<Course>
     {
         private int _intensity;
@@ -22,7 +21,7 @@ namespace CoursesManagerLib
             private set
             {
                 if (value <= 0)
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException("Intensity cannot be less than one");
                 _intensity = value;
             }
         }
@@ -33,7 +32,7 @@ namespace CoursesManagerLib
             private set
             {
                 if (value <= 0)
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException("Duration cannot be less than one");
                 _duration = value;
             }
         }
@@ -44,7 +43,7 @@ namespace CoursesManagerLib
             set
             {
                 if (value < 0 || value >= MaxPrice)
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException("Price is either less than zero or greater than the maximum value");
                 _price = value;
             }
 
@@ -65,6 +64,7 @@ namespace CoursesManagerLib
             return other != null && Language == other.Language && Intensity == other.Intensity &&
                    Level == other.Level && Format == other.Format;
         }
+
         public override string ToString()
         {
             return String.Format("Language  {0}\nLevel   {1}\nDuration  {2}\nFormat   {3}\nPrice   {4}\nIntensity   {5}\r\n", Language, Level, Duration, Format,Price, Intensity);
