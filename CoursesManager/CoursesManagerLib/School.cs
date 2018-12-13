@@ -41,15 +41,14 @@ namespace CoursesManagerLib
             Claims = new List<Claim>();
         }
 
-        //можно немного упростить код
-        //НЕ МОГУ
-        public void Admission() 
+        public void Admission() //зачисления клиентов
         {
             foreach (var client in Clients)
             {
                 if (client.CountCourseRequests != 0)
                 {
                     for (var c = 0; c < client.CountCourseRequests; c++)
+                    //foreach (Course course in client.GetCourseRequests())
                     {
                         var course = client.GetCourseRequest(c);
                         if (course.Format == Format.Individual)
@@ -100,7 +99,6 @@ namespace CoursesManagerLib
             ViewClaims();
         }
 
-        //пробегание форычем можно заменить на .Contains, правда нужно проверить как .Contains  сравнивает объекты НИЧО НЕ ЗНАЮ
         public void NewClaim(Course course, Client client)
         {
             var add = false;
@@ -122,39 +120,33 @@ namespace CoursesManagerLib
             }
         }
 
-        //так как группа это класс, то переменные gr и groop1 это один и тот же объект НЕ ПОНЯЛ?
-        //нужен метод копирования?
-        public void ShareGroup(Group group1, Client client)
+        public void ShareGroup(Group group, Client client)
         {
-            Groups.Remove(group1);
-            var gr = group1;
-            var group2 = group1;
-            for (var i = gr.GetCount() - 1; i > group1.GetCount() / 2; i--)
+            Groups.Remove(group);
+            var gr1 = new Group(group.Course);
+            var gr2 = new Group(group.Course);
+
+            for (int i =0;i<group.CountClients/2;i++)
             {
-                group1.RemoveClient(gr[i]);
+                gr1.AddClient(group[i]);
+                group[i].LeaveGroup(group);
             }
-            for (var i = 0; i < group1.GetCount() / 2; i++)
+
+            for (int i = group.CountClients / 2; i < group.CountClients; i++)
             {
-                group2.RemoveClient(gr[i]);
+                gr2.AddClient(group[i]);
+                group[i].LeaveGroup(group);
             }
-            foreach (var cl in group1)
-            {
-                cl.LeaveGroup(gr);
-                cl.JoinGroup(group1);
-            }
-            group2.AddClient(client);
-            foreach (var cl in group2)
-            {
-                cl.LeaveGroup(gr);
-                cl.JoinGroup(group2);
-            }
-            Groups.Add(group1);
-            Groups.Add(group2);
+            gr2.AddClient(client);
+
+            Groups.Add(gr1);
+            Groups.Add(gr2);
         }
 
         public void ViewClaims()
         {
             for (var c = 0; c < Claims.Count; c++)
+            //foreach (var claim in Claims)
             {
                 var claim = Claims[c];
                 var k = claim.Сlients.Count;
@@ -168,6 +160,7 @@ namespace CoursesManagerLib
                         for (var j = i * m; j < (i + 1) * m; j++)
                         {
                             gr.AddClient(claim.Сlients[j]);
+                            //claim.Сlients[j].JoinGroup(gr);
                         }
 
                         Groups.Add(gr);
@@ -177,6 +170,7 @@ namespace CoursesManagerLib
                     for (var l = k / 10 * m; l < k; l++)
                     {
                         gr.AddClient(claim.Сlients[l]);
+                        //claim.Сlients[l].JoinGroup(gr);
                     }
 
                     Groups.Add(gr);

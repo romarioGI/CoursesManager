@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CoursesManagerLib;
 using System.Windows.Forms;
+using CoursesManagerWPF;
 
 namespace WpfApp1
 {
@@ -27,7 +28,6 @@ namespace WpfApp1
         {
             InitializeComponent();
             school = new School();
-            BoxLanguage.SelectedIndex = 1;
         }
 
         private void ShowGroups_Click(object sender, RoutedEventArgs e)
@@ -107,6 +107,12 @@ namespace WpfApp1
             return course;
         }
 
+        public Course PersCourseRequest()
+        {
+            Course course = new Course(BoxPersLanguage.Text, int.Parse(BoxPersIntensity.Text), BoxPersLevel.Text, (Format)BoxPersFormat.SelectedItem, int.Parse(LabelPersDurationAvto.Content.ToString()), int.Parse(LabelPersPriceAvto.Content.ToString()));
+            return course;
+        }
+
         private void ButtonAddClaim_Click(object sender, RoutedEventArgs e)
         {
             LabelIsAddClaim.Content = "";
@@ -116,6 +122,7 @@ namespace WpfApp1
                 TextBoxID.Text = cl.Id.ToString();
             LabelIsAddClaim.Content = "Your claim is add, see your ID";
         }
+
 
         private void ButtonAdminWindow_Click(object sender, RoutedEventArgs e)
         {
@@ -186,7 +193,7 @@ namespace WpfApp1
                             for (var i = 0; i < cl.CountGroups; i++)
                             {
                                 var gr = cl.GetGroup(i);
-                                if (gr.Course == CourseRequest())
+                                if (gr.Course == PersCourseRequest())
                                 {
                                     LabelPersIsAddClaim.Content = "You have group with this course";
                                     add = true;
@@ -198,7 +205,7 @@ namespace WpfApp1
                             for (var i = 0; i < cl.CountCourseRequests; i++)
                             {
                                 var cs = cl.GetCourseRequest(i);
-                                if (cs == CourseRequest())
+                                if (cs == PersCourseRequest())
                                 {
                                     LabelPersIsAddClaim.Content = "You have Request with this course";
                                     add = true;
@@ -208,7 +215,7 @@ namespace WpfApp1
 
                             if (add)
                                 break;
-                            cl.AddCourseRequest(CourseRequest());
+                            cl.AddCourseRequest(PersCourseRequest());
                             add = true;
                             LabelPersIsAddClaim.Content = "Your claim is add";
                             break;
@@ -299,6 +306,20 @@ namespace WpfApp1
                 school = School.Deserialize(ofd.FileName);
                 System.Windows.Forms.MessageBox.Show("Successfully load from\n" + ofd.FileName);
             }
+        }
+
+        private void ButtonSetAttendance_Click(object sender, RoutedEventArgs e)
+        {
+            //SetAttendanceWindow window = new SetAttendanceWindow(school,);
+            //window.Show();
+            //this.Close();
+        }
+
+        private void ButtonGetAttendance_Click(object sender, RoutedEventArgs e)
+        {
+            //GetAttendanceWindow window = new GetAttendanceWindow(school, );
+            //window.Show();
+            //this.Close();
         }
     }
 }

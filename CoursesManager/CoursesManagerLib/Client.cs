@@ -71,7 +71,7 @@ namespace CoursesManagerLib
 
         public void LeaveGroup(Group group)
         {
-            if(_groups.Contains(group)) _groups.Remove(group);
+            if (_groups.Contains(group)) _groups.Remove(group);
             else throw new ArgumentException("This group is not in the list.");
         }
 

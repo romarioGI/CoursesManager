@@ -12,3 +12,17 @@ D:\gitHub\CoursesManager\CoursesManager\TestCoursesManagerLib\obj\Debug\netcorea
 D:\gitHub\CoursesManager\CoursesManager\TestCoursesManagerLib\obj\Debug\netcoreapp2.1\TestCoursesManagerLib.AssemblyInfo.cs
 D:\gitHub\CoursesManager\CoursesManager\TestCoursesManagerLib\obj\Debug\netcoreapp2.1\TestCoursesManagerLib.dll
 D:\gitHub\CoursesManager\CoursesManager\TestCoursesManagerLib\obj\Debug\netcoreapp2.1\TestCoursesManagerLib.pdb
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\TestCoursesManagerLib\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\TestCoursesManagerLib\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\TestCoursesManagerLib\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\TestCoursesManagerLib\bin\Debug\netcoreapp2.1\TestCoursesManagerLib.deps.json
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\TestCoursesManagerLib\bin\Debug\netcoreapp2.1\TestCoursesManagerLib.runtimeconfig.json
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\TestCoursesManagerLib\bin\Debug\netcoreapp2.1\TestCoursesManagerLib.runtimeconfig.dev.json
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\TestCoursesManagerLib\bin\Debug\netcoreapp2.1\TestCoursesManagerLib.dll
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\TestCoursesManagerLib\bin\Debug\netcoreapp2.1\TestCoursesManagerLib.pdb
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\TestCoursesManagerLib\obj\Debug\netcoreapp2.1\TestCoursesManagerLib.csprojAssemblyReference.cache
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\TestCoursesManagerLib\obj\Debug\netcoreapp2.1\TestCoursesManagerLib.csproj.CoreCompileInputs.cache
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\TestCoursesManagerLib\obj\Debug\netcoreapp2.1\TestCoursesManagerLib.AssemblyInfoInputs.cache
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\TestCoursesManagerLib\obj\Debug\netcoreapp2.1\TestCoursesManagerLib.AssemblyInfo.cs
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\TestCoursesManagerLib\obj\Debug\netcoreapp2.1\TestCoursesManagerLib.dll
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\TestCoursesManagerLib\obj\Debug\netcoreapp2.1\TestCoursesManagerLib.pdb
