@@ -1,0 +1,8 @@
+Load - load information from file
+Save - save information to file
+SetAttendance - note attendance
+GetAttendance - see attendance
+Show Groups / Clients / Claims - show the list of Groups / Clients / Claims (after pressing the Admission button)
+Admission - enrolls clients, makes a list of claims
+ShowGroupsID - allows you to view the list of groups for a specific client by its ID
+ClientWindow - goes to the client's guest window

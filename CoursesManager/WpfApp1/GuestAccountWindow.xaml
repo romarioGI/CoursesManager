@@ -1,0 +1,59 @@
+﻿<Window x:Class="WpfApp1.GuestAccountWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        xmlns:CoursesManagerLib="clr-namespace:CoursesManagerLib;assembly=CoursesManagerLib"
+        Title="GuestAccountWidow" Height="800" Width="1200" ResizeMode="NoResize">
+    <Grid x:Name="GridClient" Background="#FFD67979" Opacity="0.965" Width="1190" Height="780" Panel.ZIndex="4">
+        <ComboBox x:Name="BoxFormat" HorizontalAlignment="Left" Height="45" Margin="106,60,0,0" VerticalAlignment="Top" Width="180" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="20" SelectedIndex="0" SelectionChanged="BoxFormat_SelectionChanged">
+            <CoursesManagerLib:Format>Individual</CoursesManagerLib:Format>
+            <CoursesManagerLib:Format>Group</CoursesManagerLib:Format>
+        </ComboBox>
+        <ComboBox x:Name="BoxLanguage" HorizontalAlignment="Left" Height="45" Margin="106,140,0,0" VerticalAlignment="Top" Width="180" FontSize="20" SelectedIndex="0">
+            <TextBlock>English</TextBlock>
+            <TextBlock>Spanish</TextBlock>
+            <TextBlock>French</TextBlock>
+            <TextBlock>German</TextBlock>
+        </ComboBox>
+        <ComboBox x:Name="BoxLevel" HorizontalAlignment="Left" Height="45" Margin="106,220,0,0" VerticalAlignment="Top" Width="180" FontSize="20"  SelectedIndex="0">
+            <TextBlock>Primary</TextBlock>
+            <TextBlock>Medium</TextBlock>
+            <TextBlock>Profy</TextBlock>
+        </ComboBox>
+        <ComboBox x:Name="BoxIntensity" HorizontalAlignment="Left" Height="45" Margin="106,300,0,0" VerticalAlignment="Top" Width="180" FontSize="20" SelectedIndex="0" SelectionChanged="BoxIntensity_SelectionChanged">
+            <TextBlock>1</TextBlock>
+            <TextBlock>2</TextBlock>
+            <TextBlock>3</TextBlock>
+        </ComboBox>
+        <Label x:Name="LabelFormat" Content="Format" HorizontalAlignment="Left" Height="45" Margin="350,60,0,0" VerticalAlignment="Top" Width="400" Background="#FFE7D7D7" FontSize="20"/>
+        <Label x:Name="LabelLanguage" Content="Language" HorizontalAlignment="Left" Height="45" Margin="350,140,0,0" VerticalAlignment="Top" Width="400" Background="#FFE7D7D7" FontSize="20"/>
+        <Label x:Name="LabelLevel" Content="Level" HorizontalAlignment="Left" Height="45" Margin="350,220,0,0" VerticalAlignment="Top" Width="400" Background="#FFE7D7D7" FontSize="20"/>
+        <Label x:Name="LabelIntensity" Content="Intensity" HorizontalAlignment="Left" Height="43" Margin="350,300,0,0" VerticalAlignment="Top" Width="400" Background="#FFE7D7D7" FontSize="20"/>
+        <Label x:Name="LabelDuration" HorizontalAlignment="Left" Height="45" Margin="350,380,0,0" VerticalAlignment="Top" Width="400" Background="#FFE7D7D7" FontSize="20" Content="Duration (months)"/>
+        <Label x:Name="LabelPrice" HorizontalAlignment="Left" Height="45" Margin="350,460,0,0" VerticalAlignment="Top" Width="400" Background="#FFE7D7D7" FontSize="20" Content="Price (month)"/>
+        <Label x:Name="LabelDurationAvto" HorizontalAlignment="Left" Height="45" Margin="106,380,0,0" VerticalAlignment="Top" Width="180" Background="#FFE7D7D7" FontSize="20" Content="10"/>
+        <Label x:Name="LabelPriceAvto" HorizontalAlignment="Left" Height="45" Margin="106,460,0,0" VerticalAlignment="Top" Width="180" Background="#FFE7D7D7" FontSize="20" Content="3200"/>
+        <Label x:Name="LabelID" HorizontalAlignment="Left" Height="45" Margin="350,540,0,0" VerticalAlignment="Top" Width="400" Background="#FFE7D7D7" FontSize="20" Content="ID"/>
+        <Button x:Name="ButtonAddClaim" Content="Add Your Claim" HorizontalAlignment="Left" Height="66" Margin="106,620,0,0" VerticalAlignment="Top" Width="205" FontSize="20" Click="ButtonAddClaim_Click" Background="#FF74E268"/>
+        <TextBox x:Name="TextBoxID" IsReadOnly="True" HorizontalAlignment="Left" Height="45" Margin="106,540,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Background="#FFE7D7D7" FontSize="20"/>
+        <TextBox x:Name="TextBoxName" HorizontalAlignment="Left" Height="45" Margin="868,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" Background="#FFE7D7D7" FontSize="20"/>
+        <TextBox x:Name="TextBoxSurname" HorizontalAlignment="Left" Height="45" Margin="868,300,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" Background="#FFE7D7D7" FontSize="20"/>
+        <Label x:Name="LabelSurname" HorizontalAlignment="Left" Height="45" Margin="868,220,0,0" VerticalAlignment="Top" Width="205" Background="#FFE7D7D7" FontSize="20" Content="Surname"/>
+        <Label x:Name="LabelName" HorizontalAlignment="Left" Height="45" Margin="868,60,0,0" VerticalAlignment="Top" Width="205" Background="#FFE7D7D7" FontSize="20" Content="Name"/>
+        <Button x:Name="ButtonAdminWindow" Content="AdminWindow" HorizontalAlignment="Left" Height="55" Margin="868,620,0,0" VerticalAlignment="Top" Width="205" IsCancel="True" FontSize="20" Click="ButtonAdminWindow_Click" Background="#FF6D8EDA"/>
+        <TextBox x:Name="TextBoxIDInto" HorizontalAlignment="Left" Height="45" Margin="868,460,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" Background="#FFE7D7D7" FontSize="20"/>
+        <Button x:Name="ButtonPersAccount" Content="Account" HorizontalAlignment="Left" Height="45" Margin="868,380,0,0" VerticalAlignment="Top" Width="205" FontSize="20" Background="#FFC03956" Click="ButtonPersAccount_Click"/>
+        <ToolBar x:Name="GuesttoolBar" Background="#FFF67979" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="1190">
+            <Menu Height="40" Margin="860,5,0,-5.4" VerticalAlignment="Top" Width="200">
+                <MenuItem Header="Instruction" FontSize="22">
+                    <MenuItem x:Name="EngInstruction" Header="English" Click="EngInstruction_Click" />
+                    <MenuItem x:Name="RusInstruction" Header="Russian" Click="RusInstruction_Click"  />
+                    <Separator />
+                </MenuItem>
+            </Menu>
+        </ToolBar>
+    </Grid>
+</Window>

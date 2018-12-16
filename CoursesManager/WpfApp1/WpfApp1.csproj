@@ -60,12 +60,22 @@
     <Compile Include="GetAttendanceWindow.xaml.cs">
       <DependentUpon>GetAttendanceWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GuestAccountWindow.xaml.cs">
+      <DependentUpon>GuestAccountWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PersonalAccountWindow.xaml.cs">
+      <DependentUpon>PersonalAccountWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SetAttendanceWindow.xaml.cs">
       <DependentUpon>SetAttendanceWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="GetAttendanceWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GuestAccountWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -79,6 +89,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PersonalAccountWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SetAttendanceWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
