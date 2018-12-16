@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\gitHub\CoursesManager\CoursesManager\WpfApp1\obj\Debug\
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\WpfApp1\obj\Debug\
 WpfApp1
 none
 false
 DEBUG;TRACE
-D:\gitHub\CoursesManager\CoursesManager\WpfApp1\App.xaml
-3-964249541
+C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\WpfApp1\App.xaml
+5-21759295
 
-11814252903
-16-2014687808
-GetAttendanceWindow.xaml;MainWindow.xaml;SetAttendanceWindow.xaml;
+131197371087
+16879770024
+GetAttendanceWindow.xaml;GuestAccountWindow.xaml;MainWindow.xaml;PersonalAccountWindow.xaml;SetAttendanceWindow.xaml;
 
 True
 

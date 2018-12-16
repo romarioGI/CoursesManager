@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1200" ResizeMode="NoResize">
     <Canvas>
-        <Grid x:Name="GridPersonalClient"  Visibility="Hidden" Background="#FFD67979" Height="780" Width="1190" >
+        <!--<Grid x:Name="GridPersonalClient"  Visibility="Hidden" Background="#FFD67979" Height="780" Width="1190" >
             <ComboBox x:Name="BoxPersFormat" HorizontalAlignment="Left" Height="45" Margin="106,50,0,0" VerticalAlignment="Top" Width="180" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="20" SelectedIndex="0" SelectionChanged="BoxPersFormat_SelectionChanged">
                 <CoursesManagerLib:Format>Individual</CoursesManagerLib:Format>
                 <CoursesManagerLib:Format>Group</CoursesManagerLib:Format>
@@ -50,28 +50,36 @@
             <Button x:Name="ButtonChangeMoney" Content="Change count of money" HorizontalAlignment="Left" Margin="868,450,0,0" VerticalAlignment="Top" Width="205" Height="45" FontSize="17" Click="ButtonChangeMoney_Click"/>
             <TextBox x:Name="textBoxGetMoney" HorizontalAlignment="Left" Height="45" Margin="868,530,0,0" TextWrapping="Wrap" IsReadOnly="True" VerticalAlignment="Top" Width="205" Background="#FFE7D7D7" FontSize="20"/>
 
-        </Grid>
+        </Grid>-->
         <Grid x:Name="GridAdmin" Visibility="Visible"  Background="#FFD67979" Height="780" Width="1190" >
             <TextBox x:Name="ShowPanel" IsReadOnly="True"  HorizontalAlignment="Left" Height="613" Margin="28.2,66.2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="769" VerticalScrollBarVisibility="Visible" UndoLimit="100000" FontSize="20" FontFamily="Times New Roman" IsEnabled="True" IsReadOnlyCaretVisible="True" Background="#FFEAD5D5"/>
 
-            <Button x:Name="ShowGroups" Margin="857,66,49,643" FontSize="20" Content="Show Groups" Click="ShowGroups_Click"/>
-            <Button x:Name="ShowClients" Margin="857,141,49,561" FontSize="20" Content="Show Clients" Click="ShowClients_Click"/>
-            <Button x:Name="ShowClaims" Margin="857,220,49,482" FontSize="20" Content="Show Claims" Click="ShowClaims_Click"/>
-            <Button x:Name="ButtonAdmission" Content="Admission" HorizontalAlignment="Left" Height="63" Margin="899,303,0,0" VerticalAlignment="Top" Width="190" FontSize="20" Click="ButtonAdmission_Click"/>
-            <Button x:Name="ButtonID" Content="ShowGroupsId" HorizontalAlignment="Left" Height="63" Margin="870,548,0,0" VerticalAlignment="Top" Width="247" FontSize="20" Click="ButtonID_Click"/>
+            <Button x:Name="ShowGroups" Margin="857,70,49,643" FontSize="20" Content="Show Groups" Click="ShowGroups_Click"/>
+            <Button x:Name="ShowClients" Margin="857,160,49,545" FontSize="20" Content="Show Clients" Click="ShowClients_Click"/>
+            <Button x:Name="ShowClaims" Margin="857,250,49,448" FontSize="20" Content="Show Claims" Click="ShowClaims_Click"/>
+            <Button x:Name="ButtonAdmission" Content="Admission" HorizontalAlignment="Left" Height="63" Margin="899,352,0,0" VerticalAlignment="Top" Width="190" FontSize="20" Click="ButtonAdmission_Click"/>
+            <Button x:Name="ButtonID" Content="ShowGroupsId" HorizontalAlignment="Left" Height="63" Margin="870,464,0,0" VerticalAlignment="Top" Width="247" FontSize="20" Click="ButtonID_Click"/>
             <Button x:Name="ButtonClientWindow" Content="ClientWindow" HorizontalAlignment="Left" Height="64" Margin="899,680,0,0" VerticalAlignment="Top" Width="190" FontSize="20" Click="ButtonClientWindow_Click" Background="#FF6D8EDA"/>
-            <TextBox x:Name="TextBoxIDSearch" HorizontalAlignment="Left" Height="45" Margin="870,501,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="247" Background="#FFBAB8E5" FontSize="20" />
-            <Label x:Name="LabelIDSearch" HorizontalAlignment="Left" Margin="870,616,0,0" VerticalAlignment="Top" Height="43" Width="247" FontSize="20"/>
+            <TextBox x:Name="TextBoxIDSearch" HorizontalAlignment="Left" Height="45" Margin="870,547,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="247" Background="#FFBAB8E5" FontSize="20" />
+            <Label x:Name="LabelIDSearch" HorizontalAlignment="Left" Margin="870,563,0,0" VerticalAlignment="Top" Height="43" Width="247" FontSize="20"/>
 
-            <Button x:Name="ButtonSetAttendance" Margin="899,370,0,0" Content="SetAttendance" HorizontalAlignment="Left" Height="63"  VerticalAlignment="Top" Width="190" FontSize="20"  Background="Bisque" Click="ButtonSetAttendance_Click"/>
+            <Button x:Name="ButtonSetAttendance" Margin="28,700,0,0" Content="SetAttendance" HorizontalAlignment="Left" Height="63"  VerticalAlignment="Top" Width="190" FontSize="20"  Background="Bisque" Click="ButtonSetAttendance_Click"/>
 
             <ToolBar x:Name="toolBar" Background="#FFF67979" HorizontalAlignment="Left" Height="61" VerticalAlignment="Top" Width="1190">
                 <Button x:Name="SaveButton" FontSize="20" Content="Save" Height="56" VerticalAlignment="Top" Width="150" Click="SaveButton_Click"/>
                 <Button x:Name="LoadButton" FontSize="20" Content="Load" Height="56" VerticalAlignment="Top" Width="150" Click="LoadButton_Click"/>
+                
+                <Menu Height="50" VerticalAlignment="Top" Width="200" Margin="550,5,0,0">
+                    <MenuItem Header="Instruction" FontSize="22">
+                        <MenuItem x:Name="AdminEngInstruction" Header="English" Click="AdminEngInstruction_Click" />
+                        <MenuItem x:Name="AdminRusInstruction" Header="Russian" Click="AdminRusInstruction_Click" />
+                        <Separator />
+                    </MenuItem>
+                </Menu>
             </ToolBar>
-            <Button x:Name="ButtonGetAttendance"  Margin="899,433,0,0" Content="GetAttendance" HorizontalAlignment="Left" Height="63"  VerticalAlignment="Top" Width="190" FontSize="20"  Background="Bisque" Click="ButtonGetAttendance_Click"/>
+            <Button x:Name="ButtonGetAttendance"  Margin="277,700,0,0" Content="GetAttendance" HorizontalAlignment="Left" Height="63"  VerticalAlignment="Top" Width="190" FontSize="20"  Background="Bisque" Click="ButtonGetAttendance_Click"/>
         </Grid>
-        <Grid x:Name="GridClient" Visibility="Hidden" Background="#FFD67979" Opacity="0.965" Width="1190" Height="780" Panel.ZIndex="4">
+        <!--<Grid x:Name="GridClient" Visibility="Hidden" Background="#FFD67979" Opacity="0.965" Width="1190" Height="780" Panel.ZIndex="4">
             <ComboBox x:Name="BoxFormat" HorizontalAlignment="Left" Height="45" Margin="106,50,0,0" VerticalAlignment="Top" Width="180" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="20" SelectedIndex="0" SelectionChanged="BoxFormat_SelectionChanged">
                 <CoursesManagerLib:Format>Individual</CoursesManagerLib:Format>
                 <CoursesManagerLib:Format>Group</CoursesManagerLib:Format>
@@ -112,6 +120,6 @@
             <TextBox x:Name="TextBoxIDInto" HorizontalAlignment="Left" Height="45" Margin="868,530,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" Background="#FFE7D7D7" FontSize="20"/>
             <Button x:Name="ButtonPersAccount" Content="Account" HorizontalAlignment="Left" Height="45" Margin="868,450,0,0" VerticalAlignment="Top" Width="205" FontSize="20" Background="#FFE449FF" Click="ButtonPersAccount_Click"/>
 
-        </Grid>
+        </Grid>-->
     </Canvas>
 </Window>

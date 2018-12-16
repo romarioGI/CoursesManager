@@ -1,0 +1,14 @@
+Add claim - allows you to add your claim, for this you need to fill in the following fields:
+  Name - your name 
+  Surname - your last Name
+  Format - class format
+  Language - language
+  Level - language preparation level
+  Intensity - intensity of classes per week
+Auto-complete fields:
+  Duration - the duration of the course (depending on the intensity)
+  Price - price (depending on the format and intensity)
+  ID - your personal number,with its help you can enter your personal account
+Account - enter your ID to enter your personal account
+Admin window - return to admin window
+  

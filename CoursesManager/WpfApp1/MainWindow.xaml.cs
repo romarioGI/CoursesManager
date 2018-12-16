@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CoursesManagerLib;
 using System.Windows.Forms;
-using System.Numerics;
+using System.IO;
 using MessageBox = System.Windows.MessageBox;
 
 namespace WpfApp1
@@ -28,6 +28,8 @@ namespace WpfApp1
 
         private GetAttendanceWindow _getAttendanceWindow;
         private SetAttendanceWindow _setAttendanceWindow;
+        private GuestAccountWindow _guestAccountWindow;
+
 
         public MainWindow()
         {
@@ -35,59 +37,27 @@ namespace WpfApp1
             this.Show();
             school = new School();
 
-            _getAttendanceWindow = new GetAttendanceWindow(school);
-            _getAttendanceWindow.Owner = this;
-            _setAttendanceWindow = new SetAttendanceWindow(school);
-            _setAttendanceWindow.Owner = this;
+            _getAttendanceWindow = new GetAttendanceWindow(school)
+            {
+                Owner = this
+            };
+            _setAttendanceWindow = new SetAttendanceWindow(school)
+            {
+                Owner = this
+            };
         }
 
         private void ShowGroups_Click(object sender, RoutedEventArgs e)
         {
             string s = "";
-            s += school.Groups.Count.ToString()+"   groups\n";
+            s += school.Groups.Count.ToString() + "   groups\n";
             int i = 0;
             foreach (Group gr in school.Groups)
             {
                 i++;
-                s += i.ToString()+")"+gr.ToString() + "\n";
+                s += i.ToString() + ")" + gr.ToString() + "\n";
             }
             ShowPanel.Text = s;
-        }
-
-        private void BoxIntensity_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            int SelectInd = BoxIntensity.SelectedIndex;
-            if(LabelDurationAvto!=null)
-            switch (SelectInd)
-            {
-                    case 0:
-                        LabelDurationAvto.Content = "10";
-                        BoxFormat_SelectionChanged(sender, e);
-                        break;
-                    case 1:
-                        LabelDurationAvto.Content = "5";
-                        BoxFormat_SelectionChanged(sender, e);
-                        break;
-                    case 2:
-                        LabelDurationAvto.Content = "3";
-                        BoxFormat_SelectionChanged(sender, e);
-                        break;
-                }
-        }
-
-        private void BoxFormat_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Format caseformat = (Format)BoxFormat.SelectedValue;
-            if(BoxIntensity!=null)
-            switch (caseformat)
-            {
-                case Format.Individual:
-                    LabelPriceAvto.Content = (800*4*(BoxIntensity.SelectedIndex+1)).ToString();
-                    break;
-                case Format.Group:
-                    LabelPriceAvto.Content = (500 * 4 * (BoxIntensity.SelectedIndex + 1)).ToString();
-                    break;
-            }
         }
 
         private void ShowClients_Click(object sender, RoutedEventArgs e)
@@ -98,7 +68,7 @@ namespace WpfApp1
             foreach (Client cl in school.Clients)
             {
                 i++;
-                s +=i.ToString()+")"+ cl.ToString();
+                s += i.ToString() + ")" + cl.ToString();
             }
             ShowPanel.Text = s;
         }
@@ -111,48 +81,6 @@ namespace WpfApp1
                 s += cl.ToString() + "\n";
             ShowPanel.Text = s;
         }
-
-        public Course CourseRequest ()
-        {
-            Course course = new Course(BoxLanguage.Text,int.Parse(BoxIntensity.Text),BoxLevel.Text,(Format)BoxFormat.SelectedItem, int.Parse(LabelDurationAvto.Content.ToString()),int.Parse(LabelPriceAvto.Content.ToString()));
-            return course;
-        }
-
-        public Course PersCourseRequest()
-        {
-            Course course = new Course(BoxPersLanguage.Text, int.Parse(BoxPersIntensity.Text), BoxPersLevel.Text, (Format)BoxPersFormat.SelectedItem, int.Parse(LabelPersDurationAvto.Content.ToString()), int.Parse(LabelPersPriceAvto.Content.ToString()));
-            return course;
-        }
-
-        private void ButtonAddClaim_Click(object sender, RoutedEventArgs e)
-        {
-            LabelIsAddClaim.Content = "";
-
-            Client cl = null;
-
-            try
-            {
-                cl = new Client(TextBoxName.Text, TextBoxSurname.Text);
-            }
-            catch (Exception exception)
-            {
-                LabelIsAddClaim.Content = "Name and Surname must not be empty";
-                return;
-            }
-            cl.AddCourseRequest(CourseRequest());
-            school.Clients.Add(cl);
-
-            TextBoxID.Text = cl.Id.ToString();
-            LabelIsAddClaim.Content = "Your claim is add, see your ID";
-        }
-
-
-        private void ButtonAdminWindow_Click(object sender, RoutedEventArgs e)
-        {
-            GridClient.Visibility = Visibility.Hidden;
-            GridAdmin.Visibility = Visibility.Visible;
-        }
-
         private void ButtonAdmission_Click(object sender, RoutedEventArgs e)
         {
             school.Admission();
@@ -160,8 +88,13 @@ namespace WpfApp1
 
         private void ButtonClientWindow_Click(object sender, RoutedEventArgs e)
         {
-            GridClient.Visibility = Visibility.Visible;
-            GridAdmin.Visibility = Visibility.Hidden;
+            if(_guestAccountWindow==null)
+            {
+                _guestAccountWindow = new GuestAccountWindow(school);
+                _guestAccountWindow.Owner = this;
+            }
+            _guestAccountWindow.Visibility = Visibility.Visible;
+            Visibility = Visibility.Hidden;
         }
 
         private void ButtonID_Click(object sender, RoutedEventArgs e)
@@ -177,7 +110,6 @@ namespace WpfApp1
                         {
                             string s = "";
                             s += cl.ToString() + "\n";
-                            //foreach (Group gr in cl.Groups)
                             for (var i = 0; i < cl.CountGroups; i++)
                             {
                                 var gr = cl.GetGroup(i);
@@ -188,141 +120,15 @@ namespace WpfApp1
                             add = true;
                             break;
                         }
-                    if (!add) LabelIDSearch.Content = "Wrong ID";
+                    if (!add) MessageBox.Show("Wrong ID");
                 }
-                else LabelIDSearch.Content = "Wrong insertion of ID";
-            }
-        }
-
-        private void ButtonPersClientWindow_Click(object sender, RoutedEventArgs e)
-        {
-            GridPersonalClient.Visibility = Visibility.Hidden;
-            GridClient.Visibility = Visibility.Visible;
-        }
-
-        private void ButtonPersAddClaim_Click(object sender, RoutedEventArgs e)
-        {
-            int id = -1;
-            LabelPersIsAddClaim.Content = "";
-            if (TextBoxPersID.Text != "")
-            {
-                if (int.TryParse(TextBoxPersID.Text, out id))
-                {
-                    var add = false;
-                    foreach (var cl in school.Clients)
-                        if (cl.Id == id)
-                        {
-                            //foreach (var gr in cl.Groups)
-                            for (var i = 0; i < cl.CountGroups; i++)
-                            {
-                                var gr = cl.GetGroup(i);
-                                if (gr.Course == PersCourseRequest())
-                                {
-                                    LabelPersIsAddClaim.Content = "You have group with this course";
-                                    add = true;
-                                    break;
-                                }
-                            }
-
-                            //foreach (Course  cs in cl.CourseRequests)
-                            for (var i = 0; i < cl.CountCourseRequests; i++)
-                            {
-                                var cs = cl.GetCourseRequest(i);
-                                if (cs == PersCourseRequest())
-                                {
-                                    LabelPersIsAddClaim.Content = "You have Request with this course";
-                                    add = true;
-                                    break;
-                                }
-                            }
-
-                            if (add)
-                                break;
-                            try
-                            {
-                                cl.AddCourseRequest(PersCourseRequest());
-                            }
-                            catch (Exception exception)
-                            {
-                                LabelPersIsAddClaim.Content = "This claim already exists";
-                                return;
-                            }                          
-                            add = true;
-                            LabelPersIsAddClaim.Content = "Your claim is add";
-                            break;
-                        }
-                    if (!add) LabelPersIsAddClaim.Content = "Wrong ID";
-                }
-                else LabelPersIsAddClaim.Content = "Wrong insertion of ID";
-            }
-        }
-
-        private void BoxPersFormat_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Format caseformat = (Format)BoxPersFormat.SelectedValue;
-            if (BoxPersIntensity != null)
-                switch (caseformat)
-                {
-                    case Format.Individual:
-                        LabelPersPriceAvto.Content = (800 * 4 * (BoxPersIntensity.SelectedIndex + 1)).ToString();
-                        break;
-                    case Format.Group:
-                        LabelPersPriceAvto.Content = (500 * 4 * (BoxPersIntensity.SelectedIndex + 1)).ToString();
-                        break;
-                }
-        }
-
-        private void BoxPersIntensity_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            int SelectInd = BoxPersIntensity.SelectedIndex;
-            if (LabelPersDurationAvto != null)
-                switch (SelectInd)
-                {
-                    case 0:
-                        LabelPersDurationAvto.Content = "10";
-                        BoxPersFormat_SelectionChanged(sender, e);
-                        break;
-                    case 1:
-                        LabelPersDurationAvto.Content = "5";
-                        BoxPersFormat_SelectionChanged(sender, e);
-                        break;
-                    case 2:
-                        LabelPersDurationAvto.Content = "3";
-                        BoxPersFormat_SelectionChanged(sender, e);
-                        break;
-                }
-        }
-
-        private void ButtonPersAccount_Click(object sender, RoutedEventArgs e)
-        {
-            int id = -1;
-            LabelIsAddClaim.Content = "";
-            if (TextBoxIDInto.Text != "")
-            {
-                if (int.TryParse(TextBoxIDInto.Text, out id))
-                {
-                    bool add = false;
-                    foreach (Client cl in school.Clients)
-                        if (cl.Id == id)
-                        {
-                            GridClient.Visibility = Visibility.Hidden;
-                            GridPersonalClient.Visibility = Visibility.Visible;
-                            TextBoxPersID.Text = cl.Id.ToString();
-                            TextBoxPersName.Text = cl.Name;
-                            TextBoxPersSurname.Text = cl.Surname;
-                            textBoxGetMoney.Text = cl.Account.ToString();
-                            add = true;
-                            break;
-                        }
-                    if (!add) LabelIsAddClaim.Content = "Wrong ID";
-                }
-                else LabelIsAddClaim.Content = "Wrong insertion of ID";
+                else MessageBox.Show("Wrong insertion of ID");
             }
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            var sfd = new SaveFileDialog {Filter = @"Binary file|*.bin"};
+            var sfd = new SaveFileDialog { Filter = @"Binary file|*.bin" };
             if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 School.Serialize(sfd.FileName, school);
@@ -332,7 +138,7 @@ namespace WpfApp1
 
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
-            var ofd = new OpenFileDialog {Filter = @"Binary file|*.bin"};
+            var ofd = new OpenFileDialog { Filter = @"Binary file|*.bin" };
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 school = School.Deserialize(ofd.FileName);
@@ -359,25 +165,19 @@ namespace WpfApp1
             _getAttendanceWindow.Visibility = Visibility.Visible;
         }
 
-        private void ButtonChangeMoney_Click(object sender, RoutedEventArgs e)
+        private void AdminEngInstruction_Click(object sender, RoutedEventArgs e)
         {
-            var s = TextBoxMoney.Text;
-            var money = new BigInteger(0);
-            if (!BigInteger.TryParse(s, out money))
-            {
-                MessageBox.Show("Uncorrect count of money.");
-                return;
-            }
-
-            Client client = null;
-            var Id = int.Parse(TextBoxPersID.Text);
-            foreach (var c in school.Clients)
-            {
-                if (c.Id == Id)
-                    client = c;
-            }
-            client.ChangeAccountSum(money);
-            textBoxGetMoney.Text = client.Account.ToString();
+            StreamReader f = new StreamReader("EngAdminInstruction.txt");
+            string s = f.ReadToEnd();
+            f.Close();
+            MessageBox.Show(s);
+        }
+        private void AdminRusInstruction_Click(object sender, RoutedEventArgs e)
+        {
+            StreamReader f = new StreamReader("RusAdminInstruction.txt",Encoding.GetEncoding("windows-1251"));
+            string s = f.ReadToEnd();
+            f.Close();
+            MessageBox.Show(s);
         }
     }
 }
