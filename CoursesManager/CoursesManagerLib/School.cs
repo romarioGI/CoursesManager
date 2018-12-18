@@ -48,7 +48,7 @@ namespace CoursesManagerLib
                 if (client.CountCourseRequests != 0)
                 {
                     for (var c = 0; c < client.CountCourseRequests; c++)
-                    //foreach (Course course in client.GetCourseRequests())
+                        //foreach (Course course in client.GetCourseRequests())
                     {
                         var course = client.GetCourseRequest(c);
                         if (course.Format == Format.Individual)
@@ -112,6 +112,7 @@ namespace CoursesManagerLib
                         break;
                     }
                 }
+
             if (!add)
             {
                 var claim = new Claim(course);
@@ -126,7 +127,7 @@ namespace CoursesManagerLib
             var gr1 = new Group(group.Course);
             var gr2 = new Group(group.Course);
 
-            for (int i =0;i<group.CountClients/2;i++)
+            for (int i = 0; i < group.CountClients / 2; i++)
             {
                 gr1.AddClient(group[i]);
                 group[i].LeaveGroup(group);
@@ -137,6 +138,7 @@ namespace CoursesManagerLib
                 gr2.AddClient(group[i]);
                 group[i].LeaveGroup(group);
             }
+
             gr2.AddClient(client);
 
             Groups.Add(gr1);
@@ -146,7 +148,7 @@ namespace CoursesManagerLib
         public void ViewClaims()
         {
             for (var c = 0; c < Claims.Count; c++)
-            //foreach (var claim in Claims)
+                //foreach (var claim in Claims)
             {
                 var claim = Claims[c];
                 var k = claim.Сlients.Count;
@@ -198,8 +200,11 @@ namespace CoursesManagerLib
             using (stream)
             {
                 var f = new BinaryFormatter();
-                res = (School)f.Deserialize(stream);
+                res = (School) f.Deserialize(stream);
             }
+
+            Client.LastId = -1;
+            Group.LastId = -1;
 
             foreach (var c in res.Clients)
                 Client.LastId = Math.Max(Client.LastId, c.Id);

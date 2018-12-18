@@ -174,5 +174,17 @@ namespace WpfApp1
             f.Close();
             MessageBox.Show(s);
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+
+            if (this.Visibility == Visibility.Visible)
+                this.Owner.Close();
+        }
+
+        public void ChangeSchool(School newSchool)
+        {
+            _school = newSchool;
+        }
     }
 }

@@ -46,3 +46,7 @@ C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager
 C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\WpfApp1\obj\Debug\PersonalAccountWindow.g.cs
 C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\WpfApp1\obj\Debug\GuestAccountWindow.baml
 C:\Users\Пользователь\Documents\GitHub\CoursesManager\CoursesManager\WpfApp1\obj\Debug\PersonalAccountWindow.baml
+D:\gitHub\CoursesManager\CoursesManager\WpfApp1\obj\Debug\GuestAccountWindow.g.cs
+D:\gitHub\CoursesManager\CoursesManager\WpfApp1\obj\Debug\PersonalAccountWindow.g.cs
+D:\gitHub\CoursesManager\CoursesManager\WpfApp1\obj\Debug\GuestAccountWindow.baml
+D:\gitHub\CoursesManager\CoursesManager\WpfApp1\obj\Debug\PersonalAccountWindow.baml

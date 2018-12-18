@@ -61,7 +61,6 @@
             <Button x:Name="ButtonID" Content="ShowGroupsId" HorizontalAlignment="Left" Height="63" Margin="870,464,0,0" VerticalAlignment="Top" Width="247" FontSize="20" Click="ButtonID_Click"/>
             <Button x:Name="ButtonClientWindow" Content="ClientWindow" HorizontalAlignment="Left" Height="64" Margin="899,680,0,0" VerticalAlignment="Top" Width="190" FontSize="20" Click="ButtonClientWindow_Click" Background="#FF6D8EDA"/>
             <TextBox x:Name="TextBoxIDSearch" HorizontalAlignment="Left" Height="45" Margin="870,547,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="247" Background="#FFBAB8E5" FontSize="20" />
-            <Label x:Name="LabelIDSearch" HorizontalAlignment="Left" Margin="870,563,0,0" VerticalAlignment="Top" Height="43" Width="247" FontSize="20"/>
 
             <Button x:Name="ButtonSetAttendance" Margin="28,700,0,0" Content="SetAttendance" HorizontalAlignment="Left" Height="63"  VerticalAlignment="Top" Width="190" FontSize="20"  Background="Bisque" Click="ButtonSetAttendance_Click"/>
 

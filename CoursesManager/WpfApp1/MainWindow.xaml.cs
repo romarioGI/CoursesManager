@@ -145,10 +145,9 @@ namespace WpfApp1
                 System.Windows.Forms.MessageBox.Show("Successfully load from\n" + ofd.FileName);
             }
 
-            _getAttendanceWindow = new GetAttendanceWindow(school);
-            _getAttendanceWindow.Owner = this;
-            _setAttendanceWindow = new SetAttendanceWindow(school);
-            _setAttendanceWindow.Owner = this;
+            _getAttendanceWindow.ChangeSchool(school);
+            _setAttendanceWindow.ChangeSchool(school);
+            _guestAccountWindow?.ChangeSchool(school);
         }
 
         private void ButtonSetAttendance_Click(object sender, RoutedEventArgs e)

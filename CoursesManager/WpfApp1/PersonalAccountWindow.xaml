@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         xmlns:CoursesManagerLib="clr-namespace:CoursesManagerLib;assembly=CoursesManagerLib"
-        Title="PersonalAccountWindow" Height="800" Width="1200" ResizeMode="NoResize">
+        Title="PersonalAccountWindow" Height="800" Width="1200" ResizeMode="NoResize" Closed="Window_Closed">
     <Grid x:Name="GridPersonalClient"   Background="#FFD67979" Height="780" Width="1190" >
         <ComboBox x:Name="BoxPersFormat" HorizontalAlignment="Left" Height="45" Margin="106,60,0,0" VerticalAlignment="Top" Width="180" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="20" SelectedIndex="0" SelectionChanged="BoxPersFormat_SelectionChanged">
             <CoursesManagerLib:Format>Individual</CoursesManagerLib:Format>

@@ -128,5 +128,11 @@ namespace WpfApp1
             if (this.Visibility == Visibility.Visible)
                 this.Owner.Close();
         }
+
+        public void ChangeSchool(School newSchool)
+        {
+            _school = newSchool;
+            UpdateInfo();
+        }
     }
 }
