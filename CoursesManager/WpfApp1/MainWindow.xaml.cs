@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using CoursesManagerLib;
 using System.Windows.Forms;
 using System.IO;
@@ -139,15 +128,22 @@ namespace WpfApp1
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
             var ofd = new OpenFileDialog { Filter = @"Binary file|*.bin" };
-            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            try
             {
-                school = School.Deserialize(ofd.FileName);
-                System.Windows.Forms.MessageBox.Show("Successfully load from\n" + ofd.FileName);
-            }
+                if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    school = School.Deserialize(ofd.FileName);
+                    System.Windows.Forms.MessageBox.Show("Successfully load from\n" + ofd.FileName);
+                }
 
-            _getAttendanceWindow.ChangeSchool(school);
-            _setAttendanceWindow.ChangeSchool(school);
-            _guestAccountWindow?.ChangeSchool(school);
+                _getAttendanceWindow.ChangeSchool(school);
+                _setAttendanceWindow.ChangeSchool(school);
+                _guestAccountWindow?.ChangeSchool(school);
+            }
+            catch (Exception exception)
+            {
+                System.Windows.Forms.MessageBox.Show("Not successfully load from\n" + ofd.FileName);
+            }            
         }
 
         private void ButtonSetAttendance_Click(object sender, RoutedEventArgs e)
