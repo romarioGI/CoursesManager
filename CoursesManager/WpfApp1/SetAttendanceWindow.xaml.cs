@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -97,14 +98,27 @@ namespace WpfApp1
                 return;
             }
 
-            if (Date.SelectedDate == null)
+            var selectDate = Date.SelectedDate;
+
+            if (selectDate == null)
             {
                 MessageBox.Show("No date selected. Select a date and save again.");
                 return;
             }
 
+            var left = new DateTime(2000, 1, 1);
+            var right = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            right = right.AddDays(1);
+
+
+            if (selectDate < left|| selectDate >= right)
+            {
+                MessageBox.Show(String.Format("the selected date must be between {0} and {1}", left, right));
+                return;
+            }
+
             var gr = _school.Groups[GroupIdComboBox.SelectedIndex];
-            var date = Date.SelectedDate.Value;
+            var date = selectDate.Value;
             var attCl = new List<Client>();
 
             for(var i=0;i<gr.CountClients;i++)
