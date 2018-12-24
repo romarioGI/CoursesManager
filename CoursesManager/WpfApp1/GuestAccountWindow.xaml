@@ -19,9 +19,9 @@
             <TextBlock>German</TextBlock>
         </ComboBox>
         <ComboBox x:Name="BoxLevel" HorizontalAlignment="Left" Height="45" Margin="106,220,0,0" VerticalAlignment="Top" Width="180" FontSize="20"  SelectedIndex="0">
-            <TextBlock>Primary</TextBlock>
-            <TextBlock>Medium</TextBlock>
-            <TextBlock>Profy</TextBlock>
+            <TextBlock>Beginner</TextBlock>
+            <TextBlock>Intermediate</TextBlock>
+            <TextBlock>Mastery</TextBlock>
         </ComboBox>
         <ComboBox x:Name="BoxIntensity" HorizontalAlignment="Left" Height="45" Margin="106,300,0,0" VerticalAlignment="Top" Width="180" FontSize="20" SelectedIndex="0" SelectionChanged="BoxIntensity_SelectionChanged">
             <TextBlock>1</TextBlock>
@@ -47,7 +47,7 @@
         <TextBox x:Name="TextBoxIDInto" HorizontalAlignment="Left" Height="45" Margin="868,460,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" Background="#FFE7D7D7" FontSize="20"/>
         <Button x:Name="ButtonPersAccount" Content="Account" HorizontalAlignment="Left" Height="45" Margin="868,380,0,0" VerticalAlignment="Top" Width="205" FontSize="20" Background="#FFC03956" Click="ButtonPersAccount_Click"/>
         <ToolBar x:Name="GuesttoolBar" Background="#FFF67979" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="1190">
-            <Menu Height="40" Margin="860,5,0,-5.4" VerticalAlignment="Top" Width="200">
+            <Menu Height="40" Margin="860,5,0,-5.4" VerticalAlignment="Top" Width="200" Background="#FFF67979">
                 <MenuItem Header="Instruction" FontSize="22">
                     <MenuItem x:Name="EngInstruction" Header="English" Click="EngInstruction_Click" />
                     <MenuItem x:Name="RusInstruction" Header="Russian" Click="RusInstruction_Click"  />
