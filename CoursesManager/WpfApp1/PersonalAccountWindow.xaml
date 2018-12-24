@@ -19,9 +19,9 @@
             <TextBlock>German</TextBlock>
         </ComboBox>
         <ComboBox x:Name="BoxPersLevel" HorizontalAlignment="Left" Height="45" Margin="106,220,0,0" VerticalAlignment="Top" Width="180" FontSize="20"  SelectedIndex="0">
-            <TextBlock>Primary</TextBlock>
-            <TextBlock>Medium</TextBlock>
-            <TextBlock>Profy</TextBlock>
+            <TextBlock>Beginner</TextBlock>
+            <TextBlock>Intermediate</TextBlock>
+            <TextBlock>Mastery</TextBlock>
         </ComboBox>
         <ComboBox x:Name="BoxPersIntensity" HorizontalAlignment="Left" Height="45" Margin="106,300,0,0" VerticalAlignment="Top" Width="180" FontSize="20" SelectedIndex="0" SelectionChanged="BoxPersIntensity_SelectionChanged">
             <TextBlock>1</TextBlock>
@@ -48,7 +48,7 @@
         <Button x:Name="ButtonChangeMoney" Content="Change count of money" HorizontalAlignment="Left" Margin="868,460,0,0" VerticalAlignment="Top" Width="205" Height="45" FontSize="17" Click="ButtonChangeMoney_Click"/>
         <TextBox x:Name="textBoxGetMoney" HorizontalAlignment="Left" Height="45" Margin="868,540,0,0" TextWrapping="Wrap" IsReadOnly="True" VerticalAlignment="Top" Width="205" Background="#FFE7D7D7" FontSize="20"/>
         <ToolBar x:Name="PerstoolBar" Background="#FFF67979" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="1190">
-            <Menu Height="40" Margin="860,5,0,-5.4" VerticalAlignment="Top" Width="200">
+            <Menu Height="40" Margin="860,5,0,-5.4" VerticalAlignment="Top" Width="200" Background="#FFF67979">
                 <MenuItem Header="Instruction" FontSize="22">
                     <MenuItem x:Name="EngPersInstruction" Header="English" Click="EngPersInstruction_Click" />
                     <MenuItem x:Name="RusPersInstruction" Header="Russian" Click="RusPersInstruction_Click"  />

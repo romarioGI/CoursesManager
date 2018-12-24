@@ -48,7 +48,6 @@ namespace CoursesManagerLib
                 if (client.CountCourseRequests != 0)
                 {
                     for (var c = 0; c < client.CountCourseRequests; c++)
-                        //foreach (Course course in client.GetCourseRequests())
                     {
                         var course = client.GetCourseRequest(c);
                         if (course.Format == Format.Individual)
@@ -79,13 +78,13 @@ namespace CoursesManagerLib
                                 }
                             }
 
-                            if (!add && group1 == null) //если нет подходящих групп
+                            if (!add && group1 == null)
                             {
                                 NewClaim(course, client);
                                 client.DeleteCourseRequest(course);
                                 c--;
                             }
-                            else if (!add) //нет незаполненных подходящих групп//разделение на 2 группы
+                            else if (!add) 
                             {
                                 ShareGroup(group1, client);
                                 client.DeleteCourseRequest(course);
@@ -148,7 +147,6 @@ namespace CoursesManagerLib
         public void ViewClaims()
         {
             for (var c = 0; c < Claims.Count; c++)
-                //foreach (var claim in Claims)
             {
                 var claim = Claims[c];
                 var k = claim.Сlients.Count;
@@ -162,7 +160,6 @@ namespace CoursesManagerLib
                         for (var j = i * m; j < (i + 1) * m; j++)
                         {
                             gr.AddClient(claim.Сlients[j]);
-                            //claim.Сlients[j].JoinGroup(gr);
                         }
 
                         Groups.Add(gr);
@@ -172,7 +169,6 @@ namespace CoursesManagerLib
                     for (var l = k / 10 * m; l < k; l++)
                     {
                         gr.AddClient(claim.Сlients[l]);
-                        //claim.Сlients[l].JoinGroup(gr);
                     }
 
                     Groups.Add(gr);

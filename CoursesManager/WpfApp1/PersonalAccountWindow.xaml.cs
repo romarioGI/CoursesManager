@@ -61,7 +61,7 @@ namespace WpfApp1
                             for (var i = 0; i < cl.CountGroups; i++)
                             {
                                 var gr = cl.GetGroup(i);
-                                if (gr.Course == PersCourseRequest())
+                                if (gr.Course.Equals(PersCourseRequest()))
                                 {
                                     MessageBox.Show("You have group with this course");
                                     add = true;
